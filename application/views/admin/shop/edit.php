@@ -8,33 +8,16 @@
 <?php
 foreach($shop as $shp){}
 ?>
-<title>Edit Shop || Admin || Spiela</title>
+<title>Edit Shop || Admin</title>
 
-<!-- Bootstrap Core and vandor -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" />
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/dropify/css/dropify.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/dataTables.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css'); ?>">
-
-
-<!-- Core css -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/css/style.min.css'); ?>"/>
+<?php $this->load->view('menu/admin/style'); ?>
 </head>
 
 <body class="font-muli theme-cyan gradient">
 
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-    </div>
-</div>
-
 <div id="main_content">
     <!-- Start project content area -->
-    <?php include('menu/nav.php'); ?>
+    <?php $this->load->view('menu/admin/nav'); ?>
     <div class="page">
         <!-- Start Page header -->
         <div class="section-body">
@@ -43,7 +26,7 @@ foreach($shop as $shp){}
                     <div class="header-action">
                         <h1 class="page-title">Dashboard</h1>
                         <ol class="breadcrumb page-breadcrumb">
-                          <li class="breadcrumb-item"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></li>
+                          <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard'); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit <?php echo $shp->title; ?></li>
                         </ol>
                     </div>
@@ -63,7 +46,7 @@ foreach($shop as $shp){}
                                 <h3 class="card-title">Edit Shop</h3>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('admin/edit_shop/'.$shp->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form action="<?php echo base_url('admin/shop/edit/'.$shp->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
@@ -84,8 +67,11 @@ foreach($shop as $shp){}
                                               <label>Color</label>
                                               <select name="color" class="form-control">
                                    			   <option value="<?php echo $shp->color; ?>"><?php echo $shp->color; ?></option>
-                                   			   <option value="Black">Black</option>
-                                   			   <option value="White">White</option>
+                                   			   <?php if(!empty($color)){ foreach($color as $col){ ?>
+                                   			   <option value="<?php echo $col->title; ?>"><?php echo $col->title; ?></option>
+                                   			   <?php } }else{ ?>
+                                   			   <option>No color</option>
+                                   			   <?php } ?>
                                               </select>
                                           </div>
                                         </div>
@@ -94,10 +80,11 @@ foreach($shop as $shp){}
                                               <label>Size</label>
                                               <select name="size" class="form-control">
                         					   <option value="<?php echo $shp->size; ?>"><?php echo $shp->size; ?></option>
-                        					   <option value="S">S</option>
-                                   			   <option value="M">M</option>
-                                   			   <option value="L">L</option>
-                                   			   <option value="XL">XL</option>
+                        					   <?php if(!empty($size)){ foreach($size as $siz){ ?>
+                                   			   <option value="<?php echo $siz->title; ?>"><?php echo $siz->title; ?></option>
+                                   			   <?php } }else{ ?>
+                                   			   <option>No size</option>
+                                   			   <?php } ?>
                                               </select>
                                           </div>
                                         </div>
@@ -117,7 +104,7 @@ foreach($shop as $shp){}
                                     </div>
                                 </form>
                                 
-                                <form action="<?php echo base_url('admin/edit_shop_image/'.$shp->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form action="<?php echo base_url('admin/shop/edit_image/'.$shp->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
@@ -144,35 +131,7 @@ foreach($shop as $shp){}
     </div>
 </div>
 
-<!-- Start Main project js, jQuery, Bootstrap -->
-<script src="<?php echo base_url('admin/assets/bundles/lib.vendor.bundle.js'); ?>"></script>
-
-<!-- Start Plugin Js -->
-<script src="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/dropify/js/dropify.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/bundles/dataTables.bundle.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.min.js'); ?>"></script>
-
-<!-- Start project main js  and page js -->
-<script src="<?php echo base_url('admin/assets/js/core.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/form/dropify.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/page/dialogs.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/table/datatable.js'); ?>"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script defer src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-<!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>tinymce.init({selector:'textarea'});</script>-->
-
-<script>
-$(document).ready(function() {
-      $('#summernote').summernote({
-          tabsize: 2,
-          height: 200
-      });
-  });
-</script>
+<?php $this->load->view('menu/admin/script'); ?>
 
 </body>
 </html>

@@ -5,31 +5,17 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <?php foreach($detail as $det){} ?>
-    <title><?php echo $det->fullname; ?> ||Visionary || Elimu</title>
+    <title><?php echo $det->fullname; ?> || Visionary || Elimu</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>">
 
     <!-- CSS
 	============================================ -->
 
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/icofont.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/flaticon.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/font-awesome.min.css'); ?>">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/animate.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/swiper-bundle.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/magnific-popup.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/nice-select.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/apexcharts.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/jqvmap.min.css'); ?>">
-
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
+    <?php $this->load->view('menu/member/style'); ?>
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
     <!-- <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
@@ -50,7 +36,7 @@
 
                 <!-- Header Logo Start -->
                 <div class="login-header-logo">
-                    <a href="#"><img height="90" width="180" src="<?php echo base_url('assets/images/elimu.png'); ?>" alt="Logo"></a></li>
+                    <a href="#"><img style="height: 90px; width: auto;" src="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>" alt="Logo"></a></li>
                 </div>
                 <!-- Header Logo End -->
 
@@ -74,6 +60,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="" href="<?php echo site_url('members/profile'); ?>"><i class="icofont-user"></i> Profile</a></li>
+                            <li><a class="" href="<?php echo site_url('members/message'); ?>"><i class="icofont-user"></i> Message</a></li>
                             <li><a class="" href="<?php echo site_url('logout'); ?>"><i class="icofont-logout"></i> Sign Out</a></li>
                         </ul>
                     </div>
@@ -96,7 +83,7 @@
                         <li><a href="<?php echo site_url('members/visionary'); ?>">Visionary</a></li>
                         <li class="active"><?php echo $det->fullname; ?></li>
                     </ul>
-                    <h2 class="title"><?php echo $det->fullname; ?> <span>Elimu.</span></h2>
+                    <h2 class="title"><?php echo $det->fullname; ?></h2>
                 </div>
                 <!-- Page Banner End -->
                 
@@ -107,26 +94,10 @@
                         <div class="courses-details">
 
                             <div class="courses-details-images">
-                                <img src="<?php echo base_url('uploads/team/aca.png'); ?>" alt="Courses Details">
+                                <img src="<?php echo base_url('uploads/profile/'.$det->image); ?>" alt="">
                             </div>
 
                             <h2 class="title"><?php echo $det->fullname; ?></h2>
-
-                            <div class="courses-details-admin">
-                                <!--<div class="admin-author">
-                                    <div class="author-content">
-                                        <a class="name" href="#">Pamela Foster</a>
-                                        <span class="Enroll">286 Enrolled Students</span>
-                                    </div>
-                                </div>-->
-                                <!--<div class="admin-rating">
-                                    <span class="rating-count">4.9</span>
-                                    <span class="rating-star">
-											<span class="rating-bar" style="width: 80%;"></span>
-                                    </span>
-                                    <span class="rating-text">(5,764 Rating)</span>
-                                </div>-->
-                            </div>
 
                             <!-- Courses Details Tab Start -->
                             <div class="courses-details-tab">
@@ -148,22 +119,8 @@
                                             <div class="tab-description">
                                                 <div class="description-wrapper">
                                                     <h3 class="tab-title">Description:</h3>
-                                                    <p><?php echo $det->body; ?></p>
-=                                                </div>
-                                                <!--<div class="description-wrapper">
-                                                    <h3 class="tab-title">Curriculum:</h3>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                                                    standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type 
-                                                    specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                                    It was popularsed in the 1960 with release containing Lorem Ipsum passages desktop publishing software.</p>
+                                                    <p><?php echo $det->description; ?></p>
                                                 </div>
-                                                <div class="description-wrapper">
-                                                    <h3 class="tab-title">Certification:</h3>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-                                                    dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                                                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                                                    It was popularsed in the 1960 with release containing Lorem Ipsum passages desktop publishing software.</p>
-                                                </div>-->
                                             </div>
                                             <!-- Tab Description End -->
 
@@ -180,6 +137,7 @@
                         <!-- Courses Details End -->
 
                     </div>
+                    
                     <div class="col-lg-4">
                         <!-- Courses Details Sidebar Start -->
                         <div class="sidebar">
@@ -188,39 +146,56 @@
                             <div class="sidebar-widget widget-information">
                                 <div class="info-list">
                                     <ul>
-                                        <li><i class="icofont-bars"></i> <strong>Level</strong> <span>Secondary</span></li>
+                                        <li><i class="icofont-mail"></i> <strong>Email</strong> <span><?php echo $det->email; ?></span></li>
+                                        <li><i class="icofont-book-alt"></i> <strong>Occupation</strong> <span><?php echo $det->occupation; ?></span></li>
+                                        <li><i class="icofont-book-alt"></i> <strong>Role</strong> <span><?php echo $det->membership; ?></span></li>
                                         <li><i class="icofont-book-alt"></i> <strong>Language</strong> <span>English</span></li>
+                                        <li><div class="info-btn">
+                                        <a href="<?php echo $det->social_url; ?>" target="_blank" class="btn btn-primary btn-hover-dark w-100">Social Media</a>
+                                        </div></li>
                                     </ul>
                                 </div>
-                                <div class="info-btn">
-                                    <a href="#" class="btn btn-primary btn-hover-dark">Follow</a>
-                                </div>
+                                <?php 
+                                $session_email = $this->session->userdata('uemail');
+                                
+                                foreach($following as $follow){
+                                    $follow_email = $follow->email;
+                                }
+                                ?>
+                                <?php if($det->email == $follow->email){ ?>
+                                <form action="<?php echo base_url('members/following/unfollow_member/'.$det->id); ?>" method="post">
+                                    <input type="hidden" name="slug" value="<?php echo $det->slug; ?>">
+                                    <input type="hidden" name="fullname" value="<?php echo $det->fullname; ?>">
+                                    <input type="hidden" name="email" value="<?php echo $det->email; ?>">
+                                    <div class="info-btn">
+                                        <button type="submit" class="btn btn-primary btn-hover-dark w-100">Unfollow</button>
+                                    </div>
+                                </form>
+                                <?php }else if($det->email != $follow->email){ ?>
+                                <form action="<?php echo base_url('members/following/follow_member/'.$det->id); ?>" method="post">
+                                    <input type="hidden" name="slug" value="<?php echo $det->slug; ?>">
+                                    <input type="hidden" name="fullname" value="<?php echo $det->fullname; ?>">
+                                    <input type="hidden" name="email" value="<?php echo $det->email; ?>">
+                                    <input type="hidden" name="membership" value="<?php echo $det->membership; ?>">
+                                    <input type="hidden" name="image" value="<?php echo $det->image; ?>">
+                                    <div class="info-btn">
+                                        <button type="submit" class="btn btn-primary btn-hover-dark w-100">Follow</button>
+                                    </div>
+                                </form>
+                                <?php } ?>
                             </div>
                             <!-- Sidebar Widget Information End -->
-
-                            <!-- Sidebar Widget Share Start -->
-                            <div class="sidebar-widget">
-                                <h4 class="widget-title">Share Course:</h4>
-
-                                <ul class="social">
-                                    <li><a href="#"><i class="flaticon-facebook"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-skype"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- Sidebar Widget Share End -->
 
                         </div>
                         <!-- Courses Details Sidebar End -->
                     </div>
+                    
                 </div>
             </div>
         </div>
         <!-- Courses End -->
         
-        <?php include 'menu/footer.php'; ?>
+        <?php $this->load->view('menu/member/footer'); ?>
         
         <!--Back To Start-->
         <a href="#" class="back-to-top">
@@ -233,26 +208,7 @@
     <!-- JS
     ============================================ -->
 
-    <!-- Modernizer & jQuery JS -->
-    <script src="<?php echo base_url('assets/js/vendor/modernizr-3.11.2.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/jquery-3.5.1.min.js'); ?>"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="<?php echo base_url('assets/js/plugins/popper.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-
-    <!-- Plugins JS -->
-    <script src="<?php echo base_url('assets/js/plugins/swiper-bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.magnific-popup.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/video-playlist.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.nice-select.min.js'); ?>"></script>
-
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <script src="assets/js/plugins.min.js"></script> -->
-
-
-    <!-- Main JS -->
-    <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+    <?php $this->load->view('menu/member/script'); ?>
 
 </body>
 

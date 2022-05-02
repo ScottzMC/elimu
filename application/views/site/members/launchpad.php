@@ -10,27 +10,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>">
 
     <!-- CSS
 	============================================ -->
 
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/icofont.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/flaticon.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/font-awesome.min.css'); ?>">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/animate.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/swiper-bundle.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/magnific-popup.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/nice-select.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/apexcharts.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/jqvmap.min.css'); ?>">
-
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
-
+    <?php $this->load->view('menu/member/style'); ?>
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
     <!-- <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
@@ -51,7 +36,7 @@
 
                 <!-- Header Logo Start -->
                 <div class="login-header-logo">
-                    <a href="#"><img height="90" width="180" src="<?php echo base_url('assets/images/elimu.png'); ?>" alt="Logo"></a></li>
+                    <a href="#"><img style="height: 90px; width: auto;" src="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>" alt="Logo"></a></li>
                 </div>
                 <!-- Header Logo End -->
 
@@ -75,6 +60,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="" href="<?php echo site_url('members/profile'); ?>"><i class="icofont-user"></i> Profile</a></li>
+                            <li><a class="" href="<?php echo site_url('members/message'); ?>"><i class="icofont-user"></i> Message</a></li>
                             <li><a class="" href="<?php echo site_url('logout'); ?>"><i class="icofont-logout"></i> Sign Out</a></li>
                         </ul>
                     </div>
@@ -97,9 +83,9 @@
 
                     <!-- Courses Video Container Start -->
                     <div class="vidcontainer">
-                        <video id="myvid"></video>
+                        <iframe height="690" style="width: 100%;" src="https://www.youtube.com/embed/<?php echo $launch->video_url; ?>?autoplay=1&loop=1&list=<?php echo $launch->playlist; ?>&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-                        <div class="video-play-bar">
+                        <!--<div class="video-play-bar">
                             <div class="topControl">
                                 <div class="progress">
                                     <span class="bufferBar"></span>
@@ -143,7 +129,7 @@
                             <div class="spinner-border spinner">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
-                        </div>
+                        </div>-->
 
                     </div>
                     <!-- Courses Video Container End -->
@@ -207,51 +193,53 @@
                 </div>
                 <!-- Courses Video Player End -->
 
-                <!-- Courses Video Playlist Start -->
+                <!-- Courses Video Playlist Start 
                 <div class="courses-video-playlist">
                     <div class="playlist-title">
                         <h3 class="title">Course Content</h3>
                         <span>Lessons</span>
                     </div>
 
-                    <!-- Video Playlist Start  -->
+                    <!-- Video Playlist Start 
                     <div class="video-playlist">
                         <div class="accordion" id="videoPlaylist">
 
-                            <!-- Accordion Items Start  -->
-                            <?php 
+                            <!-- Accordion Items Start 
+                            < ?php 
                             $query_launchpad = $this->db->query("SELECT DISTINCT(lesson) FROM course WHERE category = '$launch->category' ")->result();
                             foreach($query_launchpad as $qry_launch){ 
                             ?>
                             <div class="accordion-item">
-                                <button class="collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $qry_launch->lesson; ?>">
-                                    <p>Lesson <?php echo $qry_launch->lesson; ?></p>
-                                    <!--<span class="total-duration">01 hour 15 minutes</span>-->
+                                <button class="collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse< ?php echo $qry_launch->lesson; ?>">
+                                    <p>Lesson < ?php echo $qry_launch->lesson; ?></p>
+                                    <!--<span class="total-duration">01 hour 15 minutes</span>
                                 </button>
 
-                                <div id="collapse<?php echo $qry_launch->lesson; ?>" class="accordion-collapse collapse" data-bs-parent="#videoPlaylist">
+                                <div id="collapse< ?php echo $qry_launch->lesson; ?>" class="accordion-collapse collapse" data-bs-parent="#videoPlaylist">
                                     <nav class="vids">
-                                        <?php 
+                                        < ?php 
                                         $query = $this->db->query("SELECT DISTINCT(lesson) FROM course WHERE category = '$launch->category' ")->result();
                                         foreach($query as $qry){} 
                                         
-                                        $sequel = $this->db->query("SELECT * FROM course WHERE lesson = '$qry->lesson' AND category = '$launch->category' AND title = '$launch->title' ")->result();
+                                        $sequel = $this->db->query("SELECT * FROM course WHERE lesson = '$qry->lesson' AND category = '$launch->category' AND title = '$launch->title' 
+                                        ORDER BY sub_lesson_no ASC")->result();
                                         foreach($sequel as $sql){
                                         ?>
-                                        <a class="link" href="<?php echo $launch->video_url; ?>">
-                                            <p><?php echo $sql->sub_lesson_no; ?> <?php echo $sql->sub_lesson_title; ?></p>
-                                    <!--<span class="total-duration">01 hour 15 minutes</span>-->
+                                        <a class="link" href="< ?php echo base_url('uploads/video/'.$sql->video_url); ?>">
+                                            <p>< ?php echo $sql->sub_lesson_no; ?> < ?php echo $sql->sub_lesson_title; ?></p>
+                                    <span class="total-duration">01 hour 15 minutes</span>
                                         </a>
-                                        <?php } ?>
+                                        
+                                        < ?php } ?>
                                     </nav>
                                 </div>
                             </div>
-                            <?php } ?>
-                            <!-- Accordion Items End  -->
+                            < ?php } ?>
+                            <!-- Accordion Items End  
                         
                         </div>
                     </div>
-                    <!-- Video Playlist End  -->
+                    <!-- Video Playlist End 
 
                 </div>
                 <!-- Courses Video Playlist End -->
@@ -262,7 +250,7 @@
         </div>
         <!-- Courses Enroll End -->
 
-        <?php include 'menu/footer.php'; ?>
+        <?php $this->load->view('menu/member/footer'); ?>
 
         <!--Back To Start-->
         <a href="#" class="back-to-top">
@@ -275,26 +263,7 @@
     <!-- JS
     ============================================ -->
 
-    <!-- Modernizer & jQuery JS -->
-    <script src="<?php echo base_url('assets/js/vendor/modernizr-3.11.2.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/jquery-3.5.1.min.js'); ?>"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="<?php echo base_url('assets/js/plugins/popper.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-
-    <!-- Plugins JS -->
-    <script src="<?php echo base_url('assets/js/plugins/swiper-bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.magnific-popup.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/video-playlist.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.nice-select.min.js'); ?>"></script>
-
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <script src="assets/js/plugins.min.js"></script> -->
-
-
-    <!-- Main JS -->
-    <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+    <?php $this->load->view('menu/member/script'); ?>
 
 </body>
 

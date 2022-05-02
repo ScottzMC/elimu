@@ -9,31 +9,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>">
 
     <!-- CSS
 	============================================ -->
 
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/icofont.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/flaticon.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/font-awesome.min.css'); ?>">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/animate.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/swiper-bundle.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/magnific-popup.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/nice-select.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/apexcharts.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/jqvmap.min.css'); ?>">
-
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
-
-
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
-    <link rel="stylesheet" href="assets/css/style.min.css"> -->
+    <?php $this->load->view('menu/main/style'); ?>
 
 </head>
 
@@ -41,14 +22,14 @@
 
     <div class="main-wrapper">
 
-        <?php include 'menu/nav.php'; ?>
+        <?php $this->load->view('menu/main/nav'); ?>
 
         <!-- Overlay Start -->
         <div class="overlay"></div>
         <!-- Overlay End -->
 
         <!-- Page Banner Start -->
-        <div class="section page-banner">
+        <div style="height: 400px;" class="section page-banner">
 
             <!--<img class="shape-1 animation-round" src="assets/images/shape/shape-8.png" alt="Shape">
 
@@ -89,7 +70,7 @@
 
         <!-- About Start -->
         <div class="section">
-
+            <?php if(!empty($skill_centre)){ foreach($skill_centre as $skill){ ?>
             <div class="section-padding-02 mt-n10">
                 <div class="container">
                     <div class="row">
@@ -98,7 +79,7 @@
                             <!-- About Images Start -->
                             <div class="about-images">
                                 <div class="images">
-                                    <img src="<?php echo base_url('assets/images/launchpad.png'); ?>" alt="About">
+                                    <img src="<?php echo base_url('uploads/skill_centre/'.$skill->image); ?>" alt="<?php echo $skill->title; ?>">
                                 </div>
 
                                 <!--<div class="about-years">
@@ -115,17 +96,8 @@
 
                             <!-- About Content Start -->
                             <div class="about-content">
-                                <h2 class="main-title">Launchpad Competition</h2>
-                                <p>Elimu’s Launchpad competition will be open for submissions in June 2021.</p>
-                                <p>First (£200) and Second (£100)  place prizes will be awarded for the best business pitch, detailing: </p>
-                                <p>§ What your business or idea is</p>
-                                <p>§ What your mission is</p>
-                                <p>§ What the gap in the market is</p>
-                                <p>§ Who your customer is</p>
-                                <p>§ Estimated startup costs</p> 
-                                <p>§ Where you see your business in 3 years </p>
-                                <p>The pitch should be submitted as a video or a presentation with a voiceover, no longer than 5 minutes</p>
-                                <a href="#" class="btn btn-primary btn-hover-dark">Enter Launchpad Competition</a>
+                                <h2 class="main-title"><?php echo $skill->title; ?></h2>
+                                <p><?php echo $skill->body; ?></p>
                             </div>
                             <!-- About Content End -->
 
@@ -133,97 +105,13 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="section-padding-02 mt-n10">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-
-                            <!-- About Images Start -->
-                            <div class="about-images">
-                                <div class="images">
-                                    <img src="<?php echo base_url('assets/images/launch-promoting.jpg'); ?>" alt="About">
-                                </div>
-
-                                <!--<div class="about-years">
-                                    <div class="years-icon">
-                                        <img src="assets/images/logo-icon.png" alt="About">
-                                    </div>
-                                    <p><strong>28+</strong> Years Experience</p>
-                                </div>-->
-                            </div>
-                            <!-- About Images End -->
-
-                        </div>
-                        <div class="col-lg-6">
-
-                            <!-- About Content Start -->
-                            <div class="about-content">
-                                <h2 class="main-title">Launchpad Sessions</h2>
-                                <p>We are hosting 3 business and finance sessions to mark the opening of the Launchpad competition.</p>
-                                <p>Register to attend the free sessions, where our guest speakers will cover the following business topics</p>
-                                <p><b>1. Managing your finances  – 15th June</b></p>
-                                <p>Learn about the daily habits which you can develop to save money, even when it is limited. 
-                                Once you have gained insight to these techniques, you will hear about the different ways that you can generate wealth, with an introduction to assets.</p>
-                                <p><b>2. Setting up and running a business – 22nd June</b></p>
-                                <p>Learn how to get started with a business and take it from strength to strength. You will hear about the experiences and lessons learned from two entrepreneurs 
-                                who have businesses in the tech and consumer product industries.</p>
-                                <p><b>3. Promoting and selling your (personal or business) brand - 29th June</b></p> 
-                                <p>Learn how to market your business online, with tips for your website landing page, using data insights to engage your audience and developing a marketing strategy in your business plan. 
-                                There will be plenty of time to ask questions about your personal or business brand, so come prepared to get the most out of these marketing experts. </p>
-                                <a href="#" class="btn btn-primary btn-hover-dark">Join the Launchpad Sessions</a>
-                            </div>
-                            <!-- About Content End -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } } ?>
 
         </div>
         <!-- About End -->
         
         <!-- About Start -->
         <div class="section">
-
-            <div class="section-padding-02 mt-n10">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-
-                            <!-- About Images Start -->
-                            <div class="about-images">
-                                <div class="images">
-                                    <img src="<?php echo base_url('assets/images/cv-training.jpg'); ?>" alt="CV Training">
-                                </div>
-
-                                <!--<div class="about-years">
-                                    <div class="years-icon">
-                                        <img src="assets/images/logo-icon.png" alt="About">
-                                    </div>
-                                    <p><strong>28+</strong> Years Experience</p>
-                                </div>-->
-                            </div>
-                            <!-- About Images End -->
-
-                        </div>
-                        <div class="col-lg-6">
-
-                            <!-- About Content Start -->
-                            <div class="about-content">
-                                <h2 class="main-title">CV and Interview Training</h2>
-                                <p>Every 2 months, we will select 10 candidates to receive 2 hours of interview training plus feedback on your CV from corporate professionals.</p>
-                                <p>All you need is a CV and the job description for the role that you want to apply to.</p>
-                                <p>Applications for this round of training have closed. Please look back in May 2021.</p>
-                                <p>Must be a recent graduate (applications from non grads will be considered) and of African-Caribbean heritage.</p>
-                                <a href="#" class="btn btn-primary btn-hover-dark">Apply Now</a>
-                            </div>
-                            <!-- About Content End -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
             
             <!-- Testimonial End -->
         <div class="section section-padding-02 mt-n1">
@@ -240,129 +128,24 @@
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <!-- Single Testimonial Start -->
+                            <?php if(!empty($testimonial)){ foreach($testimonial as $test){ ?>
                             <div class="single-testimonial swiper-slide">
                                 <div class="testimonial-author">
                                     <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
+                                        <img src="<?php echo base_url('uploads/testimonial/'.$test->image); ?>" alt="Author">
                                         <i class="icofont-quote-left"></i>
                                     </div>
                                     <br><br>
                                 </div>
                                 
                                 <div class="testimonial-content">
-                                    <p>“This experience is most definitely invaluable. 
-                                    Great insight again and I would definitely encourage you to keep 
-                                    going with this programme.”</p>
-                                    <h4 class="name">Lewis, 28</h4>
+                                    <p><?php echo $test->body; ?></p>
+                                    <h4 class="name"><?php echo $test->fullname; ?>, <?php echo $test->age; ?></h4>
                                 </div>
                             </div>
+                            <?php } } ?>
                             <!-- Single Testimonial End -->
-
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“Thanks once again for this opportunity. I'm glad I was chosen for this mock interview. 
-                                    Looking forward to applying the feedback received for future job interviews..”</p>
-                                    <h4 class="name">Priscilla, 24</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I'm surprised that I get the opportunity to make these connections.”</p>
-                                    <h4 class="name">Oluchi, 18</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I'm excited to be connected with someone who can relate to me as a young, Black man.”</p>
-                                    <h4 class="name">Abeselom, 19</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“It was really informative and I really took in what was spoken about. 
-                                    Thank you honestly for staying in touch and continuing to help me by providing 
-                                    me with another opportunity that will benefit me.”</p>
-                                    <h4 class="name">Kadija, 16</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I'm grateful because I always apply for these opportunities and no one gets back to me.”</p>
-                                    <h4 class="name">Cindy-Ann, 17</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I never thought my mentor would remember to send me such opportunities, it means a lot to me.”</p>
-                                    <h4 class="name">Tahou, 20</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
+                        
                         </div>
 
                         <!-- Add Pagination -->
@@ -380,7 +163,7 @@
         </div>
         <!-- About End -->
 
-        <?php include 'menu/footer.php'; ?>
+        <?php $this->load->view('menu/main/footer'); ?>
 
         <!--Back To Start-->
         <a href="#" class="back-to-top">
@@ -394,26 +177,7 @@
     <!-- JS
     ============================================ -->
 
-    <!-- Modernizer & jQuery JS -->
-    <script src="<?php echo base_url('assets/js/vendor/modernizr-3.11.2.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/jquery-3.5.1.min.js'); ?>"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="<?php echo base_url('assets/js/plugins/popper.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-
-    <!-- Plugins JS -->
-    <script src="<?php echo base_url('assets/js/plugins/swiper-bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.magnific-popup.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/video-playlist.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.nice-select.min.js'); ?>"></script>
-
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <script src="assets/js/plugins.min.js"></script> -->
-
-
-    <!-- Main JS -->
-    <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+    <?php $this->load->view('menu/main/script'); ?>
     
 </body>
 

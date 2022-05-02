@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 05, 2021 at 06:30 AM
--- Server version: 10.3.31-MariaDB-log-cll-lve
--- PHP Version: 7.3.27
+-- Generation Time: May 02, 2022 at 03:41 PM
+-- Server version: 10.3.34-MariaDB-log-cll-lve
+-- PHP Version: 7.3.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,112 @@ SET time_zone = "+00:00";
 --
 -- Database: `scottjpq_elimu`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about`
+--
+
+CREATE TABLE `about` (
+  `id` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `body` text NOT NULL,
+  `image` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`id`, `title`, `body`, `image`) VALUES
+(1, 'Elimu means ‘knowledge’ and ‘education’ in Swahili.', '<p>Elimu is a community platform dedicated to the economic empowerment and visibility of underrepresented role models.</p><p>Our name means “knowledge” and “education” in Swahili, which speaks to our commitment to empowering our current and next generation of role models through connection and learning.</p><p>Join our community to connect, learn and thrive! (green button which links to members area)</p>', 'about.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_feature`
+--
+
+CREATE TABLE `about_feature` (
+  `id` int(11) NOT NULL,
+  `icon` varchar(200) NOT NULL,
+  `title` text NOT NULL,
+  `body` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `about_feature`
+--
+
+INSERT INTO `about_feature` (`id`, `icon`, `title`, `body`) VALUES
+(1, 'fa fa-address-book', 'Community', '<p>We welcome all role models who are committed to our mission and vision.</p>'),
+(2, 'fa fa-address-book', 'Connections', '<p>Be it through mentoring, events or our programmes, we aim to develop meaningful relationships across our community.</p>'),
+(3, 'fa fa-address-book', 'Learning', '<p>Open learning is reciprocal, so we provide opportunities for our community to learn from out next generation of leaders.</p><p><br></p>'),
+(4, 'fa fa-address-book', 'Openness', '<p>Our events are open to anyone who wants to learn from our role models and we take a collaborative approach to all our initiatives.</p><p><br></p>'),
+(5, 'fa fa-address-book', 'Impact', '<p>Our community is impacting education by teaching us what their priorities are and how we can best support them.</p><p><br></p>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_objective`
+--
+
+CREATE TABLE `about_objective` (
+  `id` int(11) NOT NULL,
+  `mission_title` text NOT NULL,
+  `mission_body` text NOT NULL,
+  `vision_title` text NOT NULL,
+  `vision_body` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `about_objective`
+--
+
+INSERT INTO `about_objective` (`id`, `mission_title`, `mission_body`, `vision_title`, `vision_body`) VALUES
+(1, 'Our Mission.', '<p>We are building a community of empowered role models, working together to empower the next generation of role models.</p><p><br></p>', 'Our Vision.', 'To create a world where race is never a barrier to opportunity.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `career_interest`
+--
+
+CREATE TABLE `career_interest` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `career_interest`
+--
+
+INSERT INTO `career_interest` (`id`, `title`) VALUES
+(1, 'Accountancy, banking and finance'),
+(2, 'Business, consulting and management'),
+(3, 'Charity and voluntary work'),
+(4, 'Creative arts and design'),
+(5, 'Energy and utilities'),
+(6, 'Engineering and manufacturing'),
+(7, 'Environment and agriculture'),
+(8, 'Healthcare'),
+(9, 'Hospitality and events management'),
+(10, 'Information technology'),
+(11, 'Law'),
+(12, 'Law enforcement and security'),
+(13, 'Leisure, sport and tourism'),
+(14, 'Marketing, advertising and PR'),
+(15, 'Media and internet'),
+(16, 'Property and construction'),
+(17, 'Public services and administration'),
+(18, 'Recruitment and HR'),
+(19, 'Retail'),
+(20, 'Sales'),
+(21, 'Science and pharmaceuticals'),
+(22, 'Social care'),
+(23, 'Teacher training and education'),
+(24, 'Transport and logistics');
 
 -- --------------------------------------------------------
 
@@ -59,8 +165,37 @@ CREATE TABLE `course` (
   `lesson` varchar(200) NOT NULL,
   `sub_lesson_no` varchar(200) NOT NULL,
   `sub_lesson_title` varchar(100) NOT NULL,
-  `video_url` varchar(100) NOT NULL
+  `video_url` longtext NOT NULL,
+  `playlist` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `title`, `body`, `category`, `lesson`, `sub_lesson_no`, `sub_lesson_title`, `video_url`, `playlist`) VALUES
+(19, 'Elimu-E-Learning', '<p>This is another upload</p>', 'Launchpad', '01', '01', 'A new medicine', 'xaWFc4TvoRE', 'PLPaN6Wrl_xE09LFKm7Bwm1qeOZ-Kmgyz3'),
+(24, 'Online-Learning', '', 'Launchpad', '', '', '', 'qsA8zREbt6g', 'PL7L3xLANKxkAhicNN19D_edEOCuV2o5o9');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `covid19`
+--
+
+CREATE TABLE `covid19` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `body` text NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `covid19`
+--
+
+INSERT INTO `covid19` (`id`, `title`, `body`, `image`) VALUES
+(1, 'Elimu’s Covid-19 Response', '<p>Black youth are now three times as likely as their White peers to be unemployed as a result of the Covid-19 pandemic (Independent, 2021).</p><p>The pandemic has disproportionately exacerbated the disadvantages faced by young Black people, including Black graduates, whose unemployment has increased from 22% before the pandemic to 34% in 2021.</p><p>Inequalities, injustice, isolation and disruption to education have caused an increase in demand for our support.</p><p>By donating to Elimu, you will help us to support more young Black people through our Launchpad programme.&nbsp; You can also keep up with our Covid-19 response through the Youth Employment Group UK. Elimu is a member of YE, which is a Covid-19 response coalition working with governments, policy makers and youth employment leaders to best support disadvantaged youth through the pandemic and it’s aftermath.</p>', 'covid-response1.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,6 +208,136 @@ CREATE TABLE `donation` (
   `email` varchar(100) NOT NULL,
   `amount` int(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `elimu_pillar`
+--
+
+CREATE TABLE `elimu_pillar` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `body` text NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `elimu_pillar`
+--
+
+INSERT INTO `elimu_pillar` (`id`, `title`, `body`, `image`) VALUES
+(1, 'Personal Development', '<p>Including but not limited to:</p><p>- public speaking</p><p>- mindfulness and well-being</p><p>- time management</p><p>- personal branding</p><p>- networking, resilience</p><p>- interviewing</p><p>- job hunting</p><p>- pitching</p><p>- negotiating</p><p>- understanding of social policies, Human Rights and Sustainable Development Goals</p>', 'unsplash-image-elimu-pillars1.jpg'),
+(2, 'Entrepreneurship', '<p>Including but not limited to:</p><p>- leadership and management</p><p>- team building</p><p>- teamwork</p><p>- idea development</p><p>- market research</p><p>- pivoting</p><p>- finance</p><p>- business planning and development</p>', 'unsplash-image-elimu-pillars2.jpg'),
+(3, 'Financial Literacy', '<p>Including but not limited to:</p><p>- budgeting</p><p>- saving</p><p>- investing</p><p>- credit and debt</p><p>- household bills</p><p>- tax and national insurance</p>', 'unsplash-image-elimu-pillars3.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `body` text NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `title`, `body`, `image`) VALUES
+(1, 'Elimu Launchpad at the DINN Rapid Recovery Festival', '<p>Elimu is committed to #RapidRecovery for the #Black community. We\'re working with @DiNNHQ &amp; @nesta_uk to empower Black people across the UK with 100+ events, providing tools and resources needed to thrive.</p><p>We are hosting 3 Launchpad sessions, to mark the opening of our Launchpad competition.</p><p>If you have an entrepreneurial idea, submit a short pitch for your chance to win the £200 cash prize. The runner-up will win £100.</p><p>Find out more about the Rapid Recovery Festival here: Click Event</p>', 'support-donate.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_poster`
+--
+
+CREATE TABLE `event_poster` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `url` text NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `following`
+--
+
+CREATE TABLE `following` (
+  `id` int(11) NOT NULL,
+  `fullname` text NOT NULL,
+  `image` text NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `follower_id` int(10) NOT NULL,
+  `following_email` varchar(100) NOT NULL,
+  `membership` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `following`
+--
+
+INSERT INTO `following` (`id`, `fullname`, `image`, `email`, `follower_id`, `following_email`, `membership`, `status`, `created_date`) VALUES
+(27, 'Scott Mike', '116-1168169_pictures-of-dragon-ying-yang-wallpapers-data-src.jpg', 'scottphenix24@gmail.com', 1, 'user@email.com', 'Role Model', 'Following', '2022-04-18 13:47:42'),
+(29, 'Steven', 'ln.png', 'hello@elimu.co.uk', 29, 'user@email.com', 'Visionary', 'Following', '2022-04-19 14:25:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home`
+--
+
+CREATE TABLE `home` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `body` text NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `home`
+--
+
+INSERT INTO `home` (`id`, `title`, `body`, `image`) VALUES
+(1, 'You can’t be what you can’t see.', '<p>Elimu is a peer-learning platform dedicated to the economic development and visibility of young Black role models.</p><p><br></p>', 'image.jpg'),
+(2, '\"Because race should never be a barrier to opportunity.\"', '<p>At Elimu, we support underrepresented youth and young adults. You are eligible to apply to our programmes if you are:</p><p>- Black</p><p>- Asian</p><p>- Any other person from the global majority</p><p>- A migrant</p><p>- Of low educational attainment</p><p>- From a working class background</p>', 'Black-Techies.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `home_supporter`
+--
+
+CREATE TABLE `home_supporter` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `url` text NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `home_supporter`
+--
+
+INSERT INTO `home_supporter` (`id`, `title`, `url`, `image`) VALUES
+(1, 'Do it now now', 'https://www.doitnownow.com/', 'do-it-now.png'),
+(2, 'Hogan Lovells', 'https://www.hoganlovells.com/', 'hogan-lovells.png'),
+(3, 'Lewisham Local', 'https://www.lewishamlocal.com/launchpad/', 'lewisham-local.jpg'),
+(4, 'RSA', 'https://www.thersa.org/', 'rsa.jpg'),
+(5, 'PWC', 'https://www.pwc.co.uk/', 'pwc.jpg'),
+(6, 'Stephen Lloyds awards', 'https://www.socialenterprise.org.uk/', 'Stephen_Lloyd.jpeg\r\n'),
+(7, 'Tostan ', 'https://tostan.org/', 'tostan.jpg'),
+(8, 'Bates well', 'https://bateswells.co.uk/', 'bates.png'),
+(9, 'Certified Social Enterprise', 'https://www.socialenterprise.org.uk/', 'certified-social.png');
 
 -- --------------------------------------------------------
 
@@ -93,6 +358,7 @@ CREATE TABLE `lesson` (
 --
 
 INSERT INTO `lesson` (`id`, `title`, `body`, `category`, `image`) VALUES
+(7, 'Online-Learning', 'This is a test', 'Launchpad', 'banner2.jpg'),
 (4, 'Elimu-E-Learning', 'A short description of what the lesson is about.', 'Launchpad', 'banner1.jpg');
 
 -- --------------------------------------------------------
@@ -118,6 +384,66 @@ INSERT INTO `mentoring` (`id`, `title`, `body`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `menu_color`
+--
+
+CREATE TABLE `menu_color` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `menu_color`
+--
+
+INSERT INTO `menu_color` (`id`, `title`) VALUES
+(1, 'Black'),
+(2, 'White');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_size`
+--
+
+CREATE TABLE `menu_size` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `menu_size`
+--
+
+INSERT INTO `menu_size` (`id`, `title`) VALUES
+(1, 'S');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `opportunity`
+--
+
+CREATE TABLE `opportunity` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `body` text NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `url` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `opportunity`
+--
+
+INSERT INTO `opportunity` (`id`, `title`, `body`, `image`, `url`) VALUES
+(9, 'Team Lead at Tier', '<p>Tier is one of the fastest growing and most funded startups in Europe. They are actively seeking diverse talent to join their company and lead their operations team.</p><p>If you’d like to apply for this role, you can get support from Elimu and insights from a Manager at Tier.</p><p>Email hello@elimu.co.uk, quoting “Career Opportunity at Tier” or apply directly on Tier’s website.</p>', 'spotlight-tier.jpg', ''),
+(10, 'Science Documentaries', '<p>If you are a young person in our community with an interest in science, a company in our network has occasional vacancies for making documentaries (specialist factual), or conducting research.</p><p>Email hello@elimu.co.uk to express your interest in being connected with this company.</p>', 'spotlight-documentaries.jpg', ''),
+(11, 'Test Opp', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><p><br></p>', 'elimu.png', 'https://scottnnaghor.com/');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `order_items`
 --
 
@@ -131,6 +457,8 @@ CREATE TABLE `order_items` (
   `image` varchar(100) NOT NULL,
   `color` varchar(100) NOT NULL,
   `size` varchar(100) NOT NULL,
+  `telephone` varchar(22) NOT NULL,
+  `address` text NOT NULL,
   `status` varchar(50) NOT NULL,
   `created_time` int(100) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT current_timestamp()
@@ -158,27 +486,6 @@ INSERT INTO `policy` (`id`, `title`, `body`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role_model`
---
-
-CREATE TABLE `role_model` (
-  `id` int(11) NOT NULL,
-  `fullname` varchar(100) NOT NULL,
-  `body` longtext NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `image` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `role_model`
---
-
-INSERT INTO `role_model` (`id`, `fullname`, `body`, `category`, `image`) VALUES
-(1, 'Lynette Nabbosa', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularsed in the 1960 with release containing Lorem Ipsum passages desktop publishing software.\r\n\r\n', 'Role Model', 'lynettenabbosa.jpg');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `shop`
 --
 
@@ -198,10 +505,32 @@ CREATE TABLE `shop` (
 --
 
 INSERT INTO `shop` (`id`, `title`, `body`, `image`, `price`, `color`, `size`, `created_date`) VALUES
-(1, 'Elimu Varisty Sweatshirt', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\n', 'blog-01.jpg', 10, 'Black', 'L', '2021-08-27 17:04:39'),
-(2, 'Elimu Varsity T-shirt', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\n', 'blog-01.jpg', 8, 'Black', 'L', '2021-08-27 17:04:39'),
+(1, 'Black', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\n', 'pexels-vishnu-r-nair-1105666.jpg', 10, 'Black', 'L', '2021-08-27 17:04:39'),
+(8, 'Ghost test', '', 'concert-image.jpg', 5, 'White', 'M', '2022-04-15 11:14:56'),
 (3, 'Elimu Sweatshirt', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\n', 'blog-01.jpg', 9, 'Black', 'M', '2021-08-27 17:04:39'),
 (4, 'Elimu T-shirt', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book.\r\n\r\n', 'blog-01.jpg', 8, 'Black', 'XL', '2021-08-27 17:04:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skill_centre`
+--
+
+CREATE TABLE `skill_centre` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `body` text NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `skill_centre`
+--
+
+INSERT INTO `skill_centre` (`id`, `title`, `body`, `image`) VALUES
+(1, 'Launchpad Competition', '<p>Elimu’s Launchpad competition will be open for submissions in June 2021.</p><p><br></p><p>First (£200) and Second (£100) place prizes will be awarded for the best business pitch, detailing:</p><p>§ What your business or idea is</p><p>§ What your mission is</p><p>§ What the gap in the market is</p><p>§ Who your customer is</p><p>§ Estimated startup costs</p><p>§ Where you see your business in 3 years</p><p>The pitch should be submitted as a video or a presentation with a voiceover, no longer than 5 minutes</p>', 'launchpad.png'),
+(2, 'Launchpad Sessions', '<p>We are hosting 3 business and finance sessions to mark the opening of the Launchpad competition.</p><p>Register to attend the free sessions, where our guest speakers will cover the following business topics</p><p><b>1. Managing your finances – 15th June</b></p><p>Learn about the daily habits which you can develop to save money, even when it is limited. Once you have gained insight to these techniques, you will hear about the different ways that you can generate wealth, with an introduction to assets.</p><p><b>2. Setting up and running a business – 22nd June</b></p><p>Learn how to get started with a business and take it from strength to strength. You will hear about the experiences and lessons learned from two entrepreneurs who have businesses in the tech and consumer product industries.</p><p><b>3. Promoting and selling your (personal or business) brand - 29th June</b></p><p>Learn how to market your business online, with tips for your website landing page, using data insights to engage your audience and developing a marketing strategy in your business plan. There will be plenty of time to ask questions about your personal or business brand, so come prepared to get the most out of these marketing experts.</p>', 'launch-promoting.jpg'),
+(3, 'CV and Interview Training', '<p>Every 2 months, we will select 10 candidates to receive 2 hours of interview training plus feedback on your CV from corporate professionals.</p><p>All you need is a CV and the job description for the role that you want to apply to.</p><p>Applications for this round of training have closed. Please look back in May 2021.</p><p>Must be a recent graduate (applications from non grads will be considered) and of African-Caribbean heritage.</p>', 'cv-training.jpg');
 
 -- --------------------------------------------------------
 
@@ -221,8 +550,38 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`id`, `fullname`, `role`, `image`) VALUES
-(1, 'Lynette Nabbosa\r\n', 'Founder', 'lynettenabbosa.jpg'),
-(2, 'Annalisa Cleland-Awity\r\n', 'Co-Founder (Relationships Lead)', 'aca.png');
+(1, 'Lynette Nabbosa', 'Founder', 'lynette.jpg'),
+(2, 'Annalisa Cleland-Awity\r\n', 'Co-Founder (Relationships Lead)', 'annalisa.jpg'),
+(4, 'Thanuja', 'Social Media Manager', 'thanuja.jpg'),
+(5, 'Ivy', 'Community Manager', 'ivy.jpg'),
+(6, 'Bethlehem', 'Youth Trustee', 'bethlehem.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testimonial`
+--
+
+CREATE TABLE `testimonial` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `age` int(5) NOT NULL,
+  `body` text NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testimonial`
+--
+
+INSERT INTO `testimonial` (`id`, `fullname`, `age`, `body`, `image`) VALUES
+(1, 'Lewis', 28, '<p>“This experience is most definitely invaluable. Great insight again and I would definitely encourage you to keep going with this programme.”</p>', 'original.jpg'),
+(2, 'Priscilla', 24, '<p>“Thanks once again for this opportunity. I\'m glad I was chosen for this mock interview. Looking forward to applying the feedback received for future job interviews..”</p>', 'original.jpg'),
+(3, 'Oluchi', 18, '<p>“I\'m surprised that I get the opportunity to make these connections.”<br></p>', 'original.jpg'),
+(4, 'Abeselom', 19, '<p>“I\'m excited to be connected with someone who can relate to me as a young, Black man.”<br></p>', 'original.jpg'),
+(5, 'Kadija', 16, '<p>“It was really informative and I really took in what was spoken about. Thank you honestly for staying in touch and continuing to help me by providing me with another opportunity that will benefit me.”</p>', 'original.jpg'),
+(6, 'Cindy-Ann', 17, '<p>“I\'m grateful because I always apply for these opportunities and no one gets back to me.”<br></p>', 'original.jpg'),
+(7, 'Tahou', 20, '<p>“I never thought my mentor would remember to send me such opportunities, it means a lot to me.”<br></p>', 'original.jpg');
 
 -- --------------------------------------------------------
 
@@ -232,14 +591,17 @@ INSERT INTO `team` (`id`, `fullname`, `role`, `image`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `slug` varchar(100) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `description` text NOT NULL,
   `role` varchar(30) NOT NULL,
   `status` varchar(50) NOT NULL,
   `donation` int(10) NOT NULL,
   `image` varchar(100) NOT NULL,
   `membership` varchar(100) NOT NULL,
+  `alias` varchar(50) NOT NULL,
   `occupation` varchar(200) NOT NULL,
   `career_interest` varchar(200) NOT NULL,
   `personal_interest` varchar(200) NOT NULL,
@@ -255,34 +617,45 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `role`, `status`, `donation`, `image`, `membership`, `occupation`, `career_interest`, `personal_interest`, `signing_up`, `hoping_to_get`, `bring_to_community`, `social_url`, `created_time`, `created_date`) VALUES
-(1, 'Scott Mike', 'scottphenix24@gmail.com', '$2a$08$Zuo59CNBGeh204s7LO2mxOUnVfeGwUPl3syaPp3zJiPW0eoc639zS', 'Admin', 'Activated', 0, 'phoenix-the-red-bird-4k-i4-1280x800.jpg', 'Role Model', 'IT', '', '', '', 'Mentor,Share your skills', '', '', 1628976315, '2021-08-14 21:25:15'),
-(4, 'Carlene', 'admin@gmail.com', '$2a$08$SJ3IlxRvlm4LIMrUeeQk/u/.KxL9oVFKur3RbQuKAsaJyU2PHuAaa', 'User', 'Activated', 0, 'banner1.jpg', 'Role Model', '', 'IT', '', '', '', '', '', 1630579696, '2021-09-02 10:48:16');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `visionary`
---
-
-CREATE TABLE `visionary` (
-  `id` int(11) NOT NULL,
-  `fullname` varchar(100) NOT NULL,
-  `body` longtext NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `image` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `visionary`
---
-
-INSERT INTO `visionary` (`id`, `fullname`, `body`, `category`, `image`) VALUES
-(1, 'Annalisa Cleland-Awity', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularsed in the 1960 with release containing Lorem Ipsum passages desktop publishing software.\r\n\r\n', 'Visionary', 'aca.png');
+INSERT INTO `users` (`id`, `slug`, `fullname`, `email`, `password`, `description`, `role`, `status`, `donation`, `image`, `membership`, `alias`, `occupation`, `career_interest`, `personal_interest`, `signing_up`, `hoping_to_get`, `bring_to_community`, `social_url`, `created_time`, `created_date`) VALUES
+(1, 'scott-mike', 'Scott Mike', 'scottphenix24@gmail.com', '$2a$08$w5Ppxs5TWiC.f6NMJHMFlOR0XcnBPAKvFYUigaAUIc3DAUSSx08rG', '<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br></p>', 'Admin', 'Activated', 0, '116-1168169_pictures-of-dragon-ying-yang-wallpapers-data-src.jpg', 'Role Model', 'role_model', 'IT', 'IT', 'IT', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', 'Deliver a Workshop,Mentor,Share your skills', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.', 'https://spiela.co.uk', 1638375393, '2021-12-01 16:16:33'),
+(35, 'carlos', 'Carlos', 'user@email.com', '$2a$08$LdN59HuZ2n20NhM8ijtgh.7P9eJ3fwxfwK3.8dyDaNpGvsQFQqXaK', '', 'User', 'Activated', 0, 'original.jpg', 'Role Model', 'role_model', '', '', '', '', '', '', '', 1645051399, '2022-02-16 22:43:19'),
+(9, 'ivy', 'Ivy', 'ivy@elimu.co.uk', '$2a$08$rpH3E0fx7AHFaFq1Gw8Kj.ODn4p3sSPDztwYy7d34e8Us51f2BTee', '', 'Admin', 'Activated', 0, 'original.jpg', 'Role Model', 'role_model', '', '', '', '', '', '', '', 1634565786, '2021-10-18 14:03:06'),
+(10, 'annalisa', 'Annalisa', 'annalisa@elimu.co.uk', '$2a$08$dY2L1ydC3M9JLq5VkZZys.F8cmAjpIDdOXZ1ICll1ihZ0OkMF6FZq', '', 'Admin', 'Activated', 0, 'original.jpg', 'Role Model', 'role_model', '', '', '', '', '', '', '', 1634565862, '2021-10-18 14:04:22'),
+(11, 'thanuja', 'Thanuja', 'thanuja@elimu.co.uk', '$2a$08$CqDNejY2cL2gA02kzEDWc.kUAuMvmq15v5UoUlS5FZgXbhhsQtAMC', '', 'Admin', 'Activated', 0, 'original.jpg', 'Role Model', 'role_model', '', '', '', '', '', '', '', 1634565910, '2021-10-18 14:05:10'),
+(28, 'lyn', 'lyn', 'LYN.NABBOSA@GMAIL.COM', '$2a$08$uPl7Q4K3if8JgyLl1kbrquGYpgnpQUI6meLwED04.bCIrSfG7F3kW', '', 'User', 'Activated', 0, 'ln.png', 'Role Model', 'role_model', 'boxer', 'boxing', 'sports', '', 'Attend events', '', 'https://www.linkedin.com/company/elimucommunity/?viewAsMember=true', 1638269693, '2021-11-30 10:54:53'),
+(26, 'michel-ardani', 'Michel Ardani', 'elimu@email.com', '$2a$08$NyG1qMOjM8RMtSsO8nDZ6eJfPgkmhMmxig9y1uPrk.0MmRDJRnSEK', '', 'Admin', 'Activated', 0, 'ln.png', 'Role Model', '', '', '', '', '', '', '', 'twitter.com/_nabbosa', 1638193788, '2021-11-29 13:49:48'),
+(29, 'Andrew', 'Steven', 'hello@elimu.co.uk', '$2a$08$Iq/szXd.8X6dxiVtyUGEBeWi38wa.u0JESbvlonFSg3l08XEczpV2', '', 'User', 'Activated', 0, 'ln.png', 'Visionary', 'visionary', 'boxer', 'boxing', 'sports', '', 'Become a fellow', '', 'twitter.com/_nabbosa', 1638269761, '2021-11-30 10:56:01'),
+(30, 'lyn', 'lyn', 'lynette@elimuinternational.org', '$2a$08$eGUpA3LDnApwcMuyQmA65O5CsS2Nprakang4R0MX63Yqg0.4iISv6', '', 'User', 'Activated', 0, '', 'Role Model', 'role_model', 'SWIMMER', 'SWIMMING', 'SWIMMING', 'FOR FUN', 'Become an ambassador', 'MY SKILLS', 'https://www.linkedin.com/in/lynette-nabbosa/', 1644599979, '2022-02-11 17:19:39'),
+(34, 'lynette', 'lynette', 'lynette@nabbosa.com', '$2a$08$mE6Wc7Qx3k9Ebrt1mXZzFOLi.HyaRSS7egNae7uIwHS5JMMqNjYIy', '', 'User', 'Activated', 0, '', 'Visionary', 'visionary', '', '', '', '', '', '', '', 1644600881, '2022-02-11 17:34:41');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `about`
+--
+ALTER TABLE `about`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `about_feature`
+--
+ALTER TABLE `about_feature`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `about_objective`
+--
+ALTER TABLE `about_objective`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `career_interest`
+--
+ALTER TABLE `career_interest`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `contact`
@@ -297,9 +670,51 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `covid19`
+--
+ALTER TABLE `covid19`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `donation`
 --
 ALTER TABLE `donation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `elimu_pillar`
+--
+ALTER TABLE `elimu_pillar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `event_poster`
+--
+ALTER TABLE `event_poster`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `following`
+--
+ALTER TABLE `following`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home`
+--
+ALTER TABLE `home`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `home_supporter`
+--
+ALTER TABLE `home_supporter`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -315,6 +730,24 @@ ALTER TABLE `mentoring`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `menu_color`
+--
+ALTER TABLE `menu_color`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu_size`
+--
+ALTER TABLE `menu_size`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `opportunity`
+--
+ALTER TABLE `opportunity`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `order_items`
 --
 ALTER TABLE `order_items`
@@ -327,15 +760,15 @@ ALTER TABLE `policy`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role_model`
---
-ALTER TABLE `role_model`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `shop`
 --
 ALTER TABLE `shop`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `skill_centre`
+--
+ALTER TABLE `skill_centre`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -345,20 +778,44 @@ ALTER TABLE `team`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `testimonial`
+--
+ALTER TABLE `testimonial`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `visionary`
---
-ALTER TABLE `visionary`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `about`
+--
+ALTER TABLE `about`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `about_feature`
+--
+ALTER TABLE `about_feature`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `about_objective`
+--
+ALTER TABLE `about_objective`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `career_interest`
+--
+ALTER TABLE `career_interest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -370,7 +827,13 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `covid19`
+--
+ALTER TABLE `covid19`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `donation`
@@ -379,16 +842,70 @@ ALTER TABLE `donation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `elimu_pillar`
+--
+ALTER TABLE `elimu_pillar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `event_poster`
+--
+ALTER TABLE `event_poster`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `following`
+--
+ALTER TABLE `following`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `home`
+--
+ALTER TABLE `home`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `home_supporter`
+--
+ALTER TABLE `home_supporter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `lesson`
 --
 ALTER TABLE `lesson`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mentoring`
 --
 ALTER TABLE `mentoring`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `menu_color`
+--
+ALTER TABLE `menu_color`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `menu_size`
+--
+ALTER TABLE `menu_size`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `opportunity`
+--
+ALTER TABLE `opportunity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_items`
@@ -403,34 +920,34 @@ ALTER TABLE `policy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `role_model`
---
-ALTER TABLE `role_model`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `skill_centre`
+--
+ALTER TABLE `skill_centre`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `testimonial`
+--
+ALTER TABLE `testimonial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `visionary`
---
-ALTER TABLE `visionary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

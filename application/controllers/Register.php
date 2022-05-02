@@ -28,6 +28,9 @@
                 $time = time();
                 $date = date('Y-m-d H:i:s');
                 
+                $slug = str_replace(' ', '-', strtolower($fullname)); 
+                $alias = str_replace(' ', '_', strtolower($members));
+                
                 /*$subject = "Activate your Account";
                   $body = "
                     Welcome to FastFood and thank you for registering an account. Upon clicking the link, your account would be activated,
@@ -56,6 +59,7 @@
                  $this->email->message("$body");*/
                 
                 $register_array = array(
+                    'slug' => $slug,
                     'fullname' => $fullname,
                     'email' => $email,
                     'password' => $hashed_password,
@@ -63,6 +67,7 @@
                     'status' => "Activated",
                     'image' => $image,
                     'membership' => $members,
+                    'alias' => $alias,
                     'created_time' => $time,
                     'created_date' => $date
                 );

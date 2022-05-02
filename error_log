@@ -1,0 +1,3 @@
+
+[18-Apr-2022 07:41:53 America/New_York] PHP Warning:  Use of undefined constant e_all - assumed 'e_all' (this will throw an Error in a future version of PHP) in /home/scottjpq/public_html/elimu/index.php on line 99
+[18-Apr-2022 07:43:35 America/New_York] PHP Fatal error:  Cannot redeclare Data_model::display_visionary() in /home/scottjpq/public_html/elimu/application/models/Data_model.php on line 400

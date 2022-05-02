@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<title>Home || Admin || Elimu</title>
+
+<?php $this->load->view('menu/admin/style'); ?>
+
+</head>
+
+<body class="font-muli theme-cyan gradient">
+
+<div id="main_content">
+    <!-- Start project content area -->
+   <?php $this->load->view('menu/admin/nav'); ?>
+    <div class="page">
+        <!-- Start Page header -->
+        <div class="section-body">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="header-action">
+                        <h1 class="page-title">Home</h1>
+                        <ol class="breadcrumb page-breadcrumb">
+                          <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard'); ?>">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Home</li>
+                        </ol>
+                    </div>
+
+                    <ul class="nav nav-tabs page-header-tab">
+                        <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Home-all">View Home</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Home-add">Add Home</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Home-supporter-add">Add Supporter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section-body mt-4">
+            <div class="container-fluid">
+                <div class="tab-content">
+                    
+                    <!-- Role Model -->
+                    <div class="tab-pane active" id="Home-all">
+                        <script>
+                        function delete_home(id){
+                          var del_id = id;
+                          if(confirm("Are you sure you want to delete this home")){
+                          $.post('<?php echo base_url('admin/home/delete_home'); ?>', {"del_id": del_id}, function(data){
+                            alert('Deleted Successfully');
+                            location.reload();
+                            $('#cti').html(data)
+                            });
+                          }
+                        }
+                        
+                        </script>
+
+                        <p id='cti'></p>
+
+                        <div class="table-responsive">
+                          <table class="table table-hover table-vcenter text-nowrap js-basic-example dataTable table-striped table_custom border-style spacing5">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Body</th>
+                                        <th>Action</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php if($home){ foreach($home as $hom){ ?>
+                                    <tr>
+                                        <td><?php echo $hom->id; ?></td>
+                                        <td class="w60">
+                                            <img class="avatar" src="<?php echo base_url('uploads/home/'.$hom->image); ?>" alt="<?php echo $hom->title; ?>">
+                                        </td>
+                                        <td><span class="font-16"><?php echo $hom->title; ?></span></td>
+                                        <td><?php echo $hom->body; ?></td>
+                                        <td><a href="<?php echo site_url('admin/home/edit/'.$hom->id); ?>">Edit</a></td>
+                                        <td><button type="button" onclick="delete_home(<?php echo $hom->id; ?>)">Delete</button></td>
+                                    </tr>
+                                  <?php } }else{ echo ''; } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane show" id="Home-add">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Add Home</h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="<?php echo base_url('admin/home/add'); ?>" method="post" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Title <span class="text-danger">*</span></label>
+                                                <input type="text" name="title" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea id="summernote" name="body" class="form-control" aria-label="With textarea"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Image <span class="text-danger">*</span></label>
+                                                <input type="file" name="userFiles1[]" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 text-right m-t-20">
+                                            <button type="submit" name="add" class="btn btn-primary">SAVE</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Role Model -->
+                    
+                    <div class="tab-pane show" id="Home-supporter-add">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Home supporter</h3>
+                            </div>
+                            <?php if(!empty($home_supporter)){ foreach($home_supporter as $supporter){ ?>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xl-12 col-sm-12">
+                                        <div class="form-group">
+                                            <img height="300" width="300" src="<?php echo base_url('uploads/home/'.$supporter->image); ?>" alt="<?php echo $supporter->title; ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <h5><?php echo $supporter->title; ?></h5>
+                                        </div>
+                                        <div class="form-group">
+                                            <p><?php echo $supporter->url; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 text-right m-t-20">
+                                        <a href="<?php echo site_url('admin/home/edit_supporter/'.$supporter->id); ?>" class="btn btn-primary">EDIT</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-12 text-right m-t-20">
+                                        <button type="button" onclick="delete_supporter(<?php echo $supporter->id; ?>)" class="btn btn-primary">DELETE</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } } ?>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Add Home supporter</h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="<?php echo base_url('admin/home/add_supporter'); ?>" method="post" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Supporter <span class="text-danger">*</span></label>
+                                                <input type="text" name="title" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Supporter Link<span class="text-danger">*</span></label>
+                                                <input type="text" name="url" class="form-control" value="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Image <span class="text-danger">*</span></label>
+                                                <input type="file" name="userFiles1[]" class="form-control">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 text-right m-t-20">
+                                            <button type="submit" name="add" class="btn btn-primary">SAVE</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<?php $this->load->view('menu/admin/script'); ?>
+
+</body>
+</html>

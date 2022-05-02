@@ -9,27 +9,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>">
 
     <!-- CSS
 	============================================ -->
 
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/icofont.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/flaticon.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/font-awesome.min.css'); ?>">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/animate.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/swiper-bundle.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/magnific-popup.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/nice-select.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/apexcharts.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/jqvmap.min.css'); ?>">
-
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/newsletter.css'); ?>">
+    <?php $this->load->view('menu/main/style'); ?>
 
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
@@ -314,9 +299,9 @@ header .logo
                     <!-- Header Top Wrapper Start -->
                     <div class="header-top-wrapper">
 
-                        <!-- Header Top Left Start -->
+                        <!-- Header Top Left Start 
                         <div class="header-top-left">
-                            <p>Know more about us <a href="#">Elimu.</a></p>
+                            <p>Know more about us <a href="< ?php echo site_url('home'); ?>">Elimu.</a></p>
                         </div>
                         <!-- Header Top Left End -->
 
@@ -352,23 +337,23 @@ header .logo
                 <div class="container">
 
                     <!-- Header Main Start -->
-                    <div class="header-main-wrapper">
+                    <div style="margin-top: 5px; border: none;" class="header-main-wrapper">
 
                         <!-- Header Logo Start -->
                         <div class="header-logo">
-                            <a href="<?php echo site_url('home'); ?>"><img height="70" width="120" src="<?php echo base_url('assets/images/elimu.png'); ?>" alt="Logo"></a>
+                            <a href="<?php echo site_url('home'); ?>"><img style="height: 90px; width: auto;" src="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>" alt="Logo"></a>
                         </div>
                         <!-- Header Logo End -->
 
                         <!-- Header Menu Start -->
                         <div class="header-menu d-none d-lg-block">
                             <ul class="nav-menu">
-                                <li><a href="<?php echo site_url('home'); ?>">Home</a></li>
-                                <li><a href="<?php echo site_url('about'); ?>">About</a></li>
-                                <li><a href="<?php echo site_url('covid'); ?>">Covid-19</a></li>
-                                <li><a href="<?php echo site_url('elimu_pillars'); ?>">Elimu Pillars</a></li>
-                                <li><a href="<?php echo site_url('shop'); ?>">Shop Elimu</a></li>
-                                <li><a href="<?php echo site_url('shop/view_cart'); ?>">Cart (<?php echo $this->cart->total_items(); ?>)</a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('home'); ?>">Home</a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('about'); ?>">About</a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('covid'); ?>">Covid-19</a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('elimu_pillars'); ?>">Elimu Pillars</a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('shop'); ?>">Shop Elimu</a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('shop/view_cart'); ?>">Cart (<?php echo $this->cart->total_items(); ?>)</a></li>
                             </ul>
 
                         </div>
@@ -378,13 +363,14 @@ header .logo
                         <div class="header-sign-in-up d-none d-lg-block">
                             <ul>
                             <?php if($this->session->userdata('urole') == 'User'){ ?>
-                                <li><a class="sign-in" href="<?php echo site_url('logout'); ?>">Logout </a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('members/dashboard'); ?>">Members area</a></li>
+                                <li><a class="sign-in" style="color: #dda20b;" href="<?php echo site_url('logout'); ?>">Logout </a></li>
                             <?php }else if($this->session->userdata('urole') == 'Admin'){ ?>
-                                <li><a href="<?php echo site_url('admin/course'); ?>">Admin</a></li>
-                                <li><a class="sign-in" href="<?php echo site_url('logout'); ?>">Logout </a></li>
+                                <li><a style="color: #dda20b;" href="<?php echo site_url('admin/course'); ?>">Admin</a></li>
+                                <li><a class="sign-in" style="color: #dda20b;" href="<?php echo site_url('logout'); ?>">Logout </a></li>
                             <?php }else{ ?>
-                                <li><a class="sign-in" href="<?php echo site_url('login'); ?>">Login </a></li>
-                                <li><a class="sign-up" href="<?php echo site_url('register'); ?>">Register </a></li>
+                                <li><a class="sign-in" style="color: #dda20b;" href="<?php echo site_url('login'); ?>">Login </a></li>
+                                <li><a class="sign-up" style="color: #dda20b;" href="<?php echo site_url('register'); ?>">Register </a></li>
                             <?php } ?>
                             </ul>
                         </div>
@@ -430,13 +416,14 @@ header .logo
             <div class="mobile-sign-in-up">
                 <ul>
                 <?php if($this->session->userdata('urole') == 'User'){ ?>
-                    <li><a class="sign-in" href="<?php echo site_url('logout'); ?>">Logout </a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('members/dashboard'); ?>">Members area</a></li>
+                    <li><a style="color: #dda20b;" class="sign-in" href="<?php echo site_url('logout'); ?>">Logout </a></li>
                 <?php }else if($this->session->userdata('urole') == 'Admin'){ ?>
-                    <li><a href="<?php echo site_url('admin/course'); ?>">Admin</a></li>
-                    <li><a class="sign-in" href="<?php echo site_url('logout'); ?>">Logout </a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('admin/course'); ?>">Admin</a></li>
+                    <li><a class="sign-in" style="color: #dda20b;" href="<?php echo site_url('logout'); ?>">Logout </a></li>
                 <?php }else{ ?>
-                    <li><a class="sign-in" href="<?php echo site_url('login'); ?>">Login </a></li>
-                    <li><a class="sign-up" href="<?php echo site_url('register'); ?>">Register </a></li>
+                    <li><a class="sign-in" style="color: #dda20b;" href="<?php echo site_url('login'); ?>">Login </a></li>
+                    <li><a class="sign-up" style="color: #dda20b;" href="<?php echo site_url('register'); ?>">Register </a></li>
                 <?php } ?>
                 </ul>
             </div>
@@ -445,12 +432,12 @@ header .logo
             <!-- Mobile Menu Start -->
             <div class="mobile-menu-items">
                 <ul class="nav-menu">
-                    <li><a href="<?php echo site_url('home'); ?>">Home</a></li>
-                    <li><a href="<?php echo site_url('about'); ?>">About</a></li>
-                    <li><a href="<?php echo site_url('covid'); ?>">Covid-19 Response</a></li>
-                    <li><a href="<?php echo site_url('elimu_pillars'); ?>">Elimu Pillars</a></li>
-                    <li><a href="<?php echo site_url('shop'); ?>">Shop Elimu</a></li>
-                    <li><a href="<?php echo site_url('shop/view_cart'); ?>">Cart (<?php echo $this->cart->total_items(); ?>)</a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('home'); ?>">Home</a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('about'); ?>">About</a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('covid'); ?>">Covid-19 Response</a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('elimu_pillars'); ?>">Elimu Pillars</a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('shop'); ?>">Shop Elimu</a></li>
+                    <li><a style="color: #dda20b;" href="<?php echo site_url('shop/view_cart'); ?>">Cart (<?php echo $this->cart->total_items(); ?>)</a></li>
                 </ul>
 
             </div>
@@ -557,7 +544,7 @@ header .logo
         
         <!-- Slider End -->
         
-        <section class="showcase">
+        <section style="background: #309255;" class="showcase">
             <!--<header>
               <h2 class="logo">Travel</h2>
               <div class="toggle"></div>
@@ -566,20 +553,14 @@ header .logo
             <video src="<?php echo base_url('uploads/video/black_students.mp4'); ?>" muted loop autoplay></video>
 
             <!--<div class="overlay"></div>-->
-            <div class="text">
-              <h2>Never Stop To </h2> 
-              <h3>Exploring The World</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-              <a href="#">Explore</a>
+            <div style="margin-top: -50px;" class="text">
+              <h3>Join our community to access our members-only area</h3>
             </div>
-            <ul class="social">
+            <!--<ul class="social">
               <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
               <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a></li>
               <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
-            </ul>
+            </ul>-->
         </section>
         
         <!-- About Start -->
@@ -588,30 +569,15 @@ header .logo
             <div class="section-padding-02 mt-n10">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6">
-
-                            <!-- Single Blog Start -->
-                            <div class="single-blog">
-                                <div class="blog-image">
-                                    <a href="<?php echo site_url('skills'); ?>"><img height="230" width="200" src="<?php echo base_url('assets/images/skill_centre.png'); ?>" alt="Skills Centre"></a>
-                                </div>
-                                <div class="blog-content">
-                                    <h4 class="title"><a href="<?php echo site_url('skills'); ?>">Skill Centre</a></h4>
-                                </div>
-                            </div>
-                            <!-- Single Blog End -->
-
-                        </div>
-                        
                         <!--<div class="col-lg-4 col-md-6">
 
                             <!-- Single Blog Start 
                             <div class="single-blog">
                                 <div class="blog-image">
-                                    <a href="<?php echo site_url('lets_talk'); ?>"><img height="230" width="200" src="<?php echo base_url('assets/images/lets-talk.jpg'); ?>" alt="Let's Talk About"></a>
+                                    <a href="< ?php echo site_url('skills'); ?>"><img height="230" width="200" src="< ?php echo base_url('assets/images/skill_centre.png'); ?>" alt="Skills Centre"></a>
                                 </div>
                                 <div class="blog-content">
-                                    <h4 class="title"><a href="<?php echo site_url('lets_talk'); ?>">Let's Talk About</a></h4>
+                                    <h4 class="title"><a href="< ?php echo site_url('skills'); ?>">Skill Centre</a></h4>
                                 </div>
                             </div>
                             <!-- Single Blog End 
@@ -623,15 +589,31 @@ header .logo
                             <!-- Single Blog Start -->
                             <div class="single-blog">
                                 <div class="blog-image">
-                                    <a href="<?php echo site_url('event'); ?>"><img height="230" width="200" src="<?php echo base_url('assets/images/events.jpg'); ?>" alt="Events"></a>
+                                    <a href="<?php echo site_url('lets_talk'); ?>"><img height="230" width="200" src="<?php echo base_url('assets/images/lets-talk.jpg'); ?>" alt="Let's Talk About"></a>
                                 </div>
                                 <div class="blog-content">
-                                    <h4 class="title"><a href="<?php echo site_url('event'); ?>">Events</a></h4>
+                                    <h4 class="title"><a href="<?php echo site_url('lets_talk'); ?>">Let's Talk About</a></h4>
                                 </div>
                             </div>
                             <!-- Single Blog End -->
 
                         </div>
+                        
+                        <!--<div class="col-lg-4 col-md-6">
+
+                            <!-- Single Blog Start 
+                            <div class="single-blog">
+                                <div class="blog-image">
+                                    <a href="< ?php echo site_url('event'); ?>"><img height="230" width="200" src="< ?php echo base_url('assets/images/events.jpg'); ?>" alt="Events"></a>
+                                </div>
+                                <div class="blog-content">
+                                    <h4 class="title"><a href="< ?php echo site_url('event'); ?>">Events</a></h4>
+                                </div>
+                            </div>
+                            <!-- Single Blog End 
+
+                        </div>-->
+                        
                         <div class="col-lg-4 col-md-6">
 
                             <!-- Single Blog Start -->
@@ -641,6 +623,21 @@ header .logo
                                 </div>
                                 <div class="blog-content">
                                     <h4 class="title"><a href="<?php echo site_url('opportunity'); ?>">Opportunity Spotlight</a></h4>
+                                </div>
+                            </div>
+                            <!-- Single Blog End -->
+
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+
+                            <!-- Single Blog Start -->
+                            <div class="single-blog">
+                                <div class="blog-image">
+                                    <a href="<?php echo site_url('skills'); ?>"><img height="230" width="200" src="<?php echo base_url('assets/images/skill_centre.png'); ?>" alt="Skill Centre"></a>
+                                </div>
+                                <div class="blog-content">
+                                    <h4 class="title"><a href="<?php echo site_url('skills'); ?>">Skill Centre</a></h4>
                                 </div>
                             </div>
                             <!-- Single Blog End -->
@@ -679,58 +676,20 @@ header .logo
 
                     </div>
                     
-                    <div class="row">
-                        
-                        <div class="col-lg-6">
-
-                            <!-- About Images Start -->
-                            <div class="about-images">
-                                <div class="images">
-                                    <img src="<?php echo base_url('assets/images/image.jpg'); ?>" alt="About">
-                                </div>
-
-                                <!--<div class="about-years">
-                                    <div class="years-icon">
-                                        <img src="assets/images/logo-icon.png" alt="About">
-                                    </div>
-                                    <p><strong>28+</strong> Years Experience</p>
-                                </div>-->
-                            </div>
-                            <!-- About Images End -->
-
-                        </div>
-                        <div class="col-lg-6">
-
-                            <!-- About Content Start -->
-                            <div class="about-content">
-                                <h2 class="main-title">Elimu means ‘knowledge’ and ‘education’ <span style="color: #dda20b;">in Swahili.</span></h2>
-                                <p>We provide underrepresented youth and young adults with a community of cross-sector role models who enhance their education, careers and financial literacy.</p>
-                                <p>Our community achieves this by providing mentoring, training and interactive events. 
-                                These are opportunities for our Young Visionaries (YV’s)  to interact and learn from role models who they identify with. </p>
-                                <p>YV’s may identify with role models in our community because they are from a similar background, race, ethnicity, gender, or they share similar career aspirations.</p>
-                                <p>By receiving a mentor from a desired career field, or participating in training with a corporation, our beneficiaries are able to develop their networks, while learning how to navigate spaces  
-                                and access career or personal development opportunities.</p>
-                                <p>Join our community to develop your skills , attend our events, access opportunities or join our Launchpad programme.</p>
-                                <p>We have different programmes for youth and young adults. To apply directly to a programme, you must be aged 18+.  Our programmes for under 18s 
-                                are delivered through your school, college, university, local authority or youth group.</p>
-                                <p>If you’d like to support our young people, register your interest and we will be in touch. </p>
-                            </div>
-                            <!-- About Content End -->
-
-                        </div>
-                    </div>
+                    
+                    
                 </div>
             </div>
             
             <div class="section-padding-02 mt-n10">
                 <div class="container">
+                    <?php if(!empty($home)){ foreach($home as $hom){ ?>
                     <div class="row">
                         <div class="col-lg-6">
-
                             <!-- About Images Start -->
                             <div class="about-images">
                                 <div class="images">
-                                    <img src="<?php echo base_url('assets/images/Black-Techies.jpg'); ?>" alt="About">
+                                    <img src="<?php echo base_url('uploads/home/'.$hom->image); ?>" alt="<?php echo $hom->title; ?>">
                                 </div>
 
                                 <!--<div class="about-years">
@@ -747,22 +706,14 @@ header .logo
 
                             <!-- About Content Start -->
                             <div class="about-content">
-                                <h2 class="main-title">*Under-represented groups</h2>
-                                <p>At Elimu, we support underrepresented youth and young adults. You are eligible to apply to our programmes if you are:</p>
-                                <ul>
-                                    <li> - Black</li>
-                                    <li> - Asian</li>
-                                    <li> - Any other person from the global majority</li>
-                                    <li> - A migrant</li>
-                                    <li> - Of low educational attainment</li>
-                                    <li> - From a working class background</li>
-                                </ul>
-                                <!--<a href="#" class="btn btn-primary btn-hover-dark">Start A Course</a>-->
+                                <h2 class="main-title"><?php echo $hom->title; ?></h2>
+                                <p><?php echo $hom->body; ?></p>
                             </div>
                             <!-- About Content End -->
 
                         </div>
                     </div>
+                    <?php } } ?>
                 </div>
             </div>
 
@@ -784,129 +735,24 @@ header .logo
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <!-- Single Testimonial Start -->
+                            <?php if(!empty($testimonial)){ foreach($testimonial as $test){ ?>
                             <div class="single-testimonial swiper-slide">
                                 <div class="testimonial-author">
                                     <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
+                                        <img src="<?php echo base_url('uploads/testimonial/'.$test->image); ?>" alt="<?php echo $test->fullname; ?>">
                                         <i class="icofont-quote-left"></i>
                                     </div>
                                     <br><br>
                                 </div>
                                 
                                 <div class="testimonial-content">
-                                    <p>“This experience is most definitely invaluable. 
-                                    Great insight again and I would definitely encourage you to keep 
-                                    going with this programme.”</p>
-                                    <h4 class="name">Lewis, 28</h4>
+                                    <p><?php echo $test->body; ?></p>
+                                    <h4 class="name"><?php echo $test->fullname; ?>, <?php echo $test->age; ?></h4>
                                 </div>
                             </div>
+                            <?php } } ?>
                             <!-- Single Testimonial End -->
-
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“Thanks once again for this opportunity. I'm glad I was chosen for this mock interview. 
-                                    Looking forward to applying the feedback received for future job interviews..”</p>
-                                    <h4 class="name">Priscilla, 24</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I'm surprised that I get the opportunity to make these connections.”</p>
-                                    <h4 class="name">Oluchi, 18</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I'm excited to be connected with someone who can relate to me as a young, Black man.”</p>
-                                    <h4 class="name">Abeselom, 19</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“It was really informative and I really took in what was spoken about. 
-                                    Thank you honestly for staying in touch and continuing to help me by providing 
-                                    me with another opportunity that will benefit me.”</p>
-                                    <h4 class="name">Kadija, 16</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I'm grateful because I always apply for these opportunities and no one gets back to me.”</p>
-                                    <h4 class="name">Cindy-Ann, 17</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
-                            <!-- Single Testimonial Start -->
-                            <div class="single-testimonial swiper-slide">
-                                <div class="testimonial-author">
-                                    <div class="author-thumb">
-                                        <img src="<?php echo base_url('assets/images/author/original.jpg'); ?>" alt="Author">
-                                        <i class="icofont-quote-left"></i>
-                                    </div>
-                                    <br><br>
-                                </div>
-                                
-                                <div class="testimonial-content">
-                                    <p>“I never thought my mentor would remember to send me such opportunities, it means a lot to me.”</p>
-                                    <h4 class="name">Tahou, 20</h4>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial End -->
-                            
+                        
                         </div>
 
                         <!-- Add Pagination -->
@@ -922,7 +768,7 @@ header .logo
         <!-- Testimonial End -->
 
         <!-- Brand Logo Start -->
-        <div class="section section-padding-02">
+        <div style="padding-top: 35px; padding-bottom: 30px;" class="section section-padding-02">
             <div class="container">
 
                 <!-- Brand Logo Wrapper Start -->
@@ -930,7 +776,7 @@ header .logo
 
                     <!-- Section Title Start -->
                     <div class="section-title shape-03">
-                        <h2 class="main-title">Best Supporter of <span style="color: #dda20b;"> Elimu.</span></h2>
+                        <h2 class="main-title">Supporters of <span style="color: #dda20b;"> Elimu.</span></h2>
                     </div>
                     <!-- Section Title End -->
 
@@ -940,75 +786,13 @@ header .logo
                             <div class="swiper-wrapper">
 
                                 <!-- Single Brand Start -->
+                                <?php if(!empty($home_supporter)){ foreach($home_supporter as $supporter){ ?>
                                 <div class="single-brand swiper-slide">
-                                    <a href="https://bateswells.co.uk/" target="_blank">    
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/bates.png'); ?>" alt="Bates Well">
+                                    <a href="<?php echo $supporter->url; ?>" target="_blank">    
+                                        <img height="100" width="100" src="<?php echo base_url('uploads/home/'.$supporter->image); ?>" alt="<?php echo $supporter->title; ?>">
                                     </a>    
                                 </div>
-                                <!-- Single Brand End -->
-
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://www.socialenterprise.org.uk/" target="_blank">
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/certified-social.png'); ?>" alt="Certified Social">
-                                    </a>    
-                                </div>
-                                <!-- Single Brand End -->
-
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://www.doitnownow.com/" target="_blank">
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/do-it-now.png'); ?>" alt="Do It Now">
-                                    </a>
-                                </div>
-                                <!-- Single Brand End -->
-
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://www.hoganlovells.com/" target="_blank">    
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/hogan-lovells.png'); ?>" alt="Hogan Lovells">
-                                    </a>    
-                                </div>
-                                <!-- Single Brand End -->
-
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://www.lewishamlocal.com/launchpad/" target="_blank">
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/lewisham-local.jpg'); ?>" alt="Lewisham Local">
-                                    </a>
-                                </div>
-                                <!-- Single Brand End -->
-
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://www.thersa.org/" target="_blank">
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/rsa.jpg'); ?>" alt="RSA">
-                                    </a>
-                                </div>
-                                <!-- Single Brand End -->
-                                
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://www.pwc.co.uk/" target="_blank">
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/pwc.jpg'); ?>" alt="PWC">
-                                    </a>
-                                </div>
-                                <!-- Single Brand End -->
-                                
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://www.socialenterprise.org.uk/" target="_blank">
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/stephen-lloyds.jpg'); ?>" alt="Stephen Lloyds">
-                                    </a>
-                                </div>
-                                <!-- Single Brand End -->
-                                
-                                <!-- Single Brand Start -->
-                                <div class="single-brand swiper-slide">
-                                    <a href="https://tostan.org/" target="_blank">
-                                        <img height="100" width="100" src="<?php echo base_url('assets/images/brand/tostan.jpg'); ?>" alt="Tostan">
-                                    </a>
-                                </div>
+                                <?php } } ?>
                                 <!-- Single Brand End -->
 
                             </div>
@@ -1023,7 +807,7 @@ header .logo
         </div><br><br>
         <!-- Brand Logo End -->
 
-        <?php include 'menu/footer.php'; ?>
+        <?php $this->load->view('menu/main/footer'); ?>
 
         <!--Back To Start-->
         <a href="#" class="back-to-top">
@@ -1054,76 +838,7 @@ header .logo
     <!-- JS
     ============================================ -->
 
-    <!-- Modernizer & jQuery JS -->
-    <script src="<?php echo base_url('assets/js/vendor/modernizr-3.11.2.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/jquery-3.5.1.min.js'); ?>"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="<?php echo base_url('assets/js/plugins/popper.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-
-    <!-- Plugins JS -->
-    <script src="<?php echo base_url('assets/js/plugins/swiper-bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.magnific-popup.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/video-playlist.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.nice-select.min.js'); ?>"></script>
-
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <script src="assets/js/plugins.min.js"></script> -->
-
-
-    <!-- Main JS -->
-    <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
-    
-    <script>
-	
-	$(document).ready(function() {
-
-        var delay = 3000; // milliseconds
-        var cookie_expire = 0; // days
-    
-        var cookie = localStorage.getItem("list-builder");
-        if(cookie == undefined || cookie == null) {
-            cookie = 0;
-        }
-    
-        if(((new Date()).getTime() - cookie) / (1000 * 60 * 60 * 24) > cookie_expire) {
-            $("#list-builder").delay(delay).fadeIn("fast", () => {
-                $("#popup-box").fadeIn("fast", () => {});
-            });
-    
-            $("button[name=subscribe]").click(() => {
-                $.ajax({
-                    type: "POST",
-                    url: $("#popup-form").attr("action"),
-                    data: $("#popup-form").serialize(),
-                    success: (data) => {
-                        $("#popup-box-content").html("<p style='text-align: center'>Thank you for subscribing to The Polyglot Developer newsletter!</p>");
-                    }
-                });
-            });
-    
-            $("#popup-close").click(() => {
-                $("#list-builder, #popup-box").hide();
-                localStorage.setItem("list-builder", (new Date()).getTime());
-            });
-        }
-
-    });
-    
-    </script>
-    
-    <script>
-	
-	 const menuToggle = document.querySelector('.toggle');
-      const showcase = document.querySelector('.showcase');
-
-      menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        showcase.classList.toggle('active');
-      })
-
-</script>
+    <?php $this->load->view('menu/main/script'); ?>
 
 </body>
 

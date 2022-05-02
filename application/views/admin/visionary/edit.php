@@ -8,33 +8,16 @@
 <?php
 foreach($visionary as $vis){}
 ?>
-<title>Edit Visionary || Admin || Spiela</title>
+<title>Edit Visionary || Admin</title>
 
-<!-- Bootstrap Core and vandor -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" />
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/dropify/css/dropify.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/dataTables.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css'); ?>">
-
-
-<!-- Core css -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/css/style.min.css'); ?>"/>
+<?php $this->load->view('menu/admin/style'); ?>
 </head>
 
 <body class="font-muli theme-cyan gradient">
 
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-    </div>
-</div>
-
 <div id="main_content">
     <!-- Start project content area -->
-    <?php include('menu/nav.php'); ?>
+    <?php $this->load->view('menu/admin/nav'); ?>
     <div class="page">
         <!-- Start Page header -->
         <div class="section-body">
@@ -43,7 +26,7 @@ foreach($visionary as $vis){}
                     <div class="header-action">
                         <h1 class="page-title">Edit Visionary</h1>
                         <ol class="breadcrumb page-breadcrumb">
-                          <li class="breadcrumb-item"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></li>
+                          <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard'); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Edit <?php echo $vis->fullname; ?></li>
                         </ol>
                     </div>
@@ -63,19 +46,83 @@ foreach($visionary as $vis){}
                                 <h3 class="card-title">Edit Visionary</h3>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('admin/edit_visionary/'.$vis->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form action="<?php echo base_url('admin/visionary/edit/'.$vis->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
-                                                <label>Full Name <span class="text-danger">*</span></label>
-                                                <input type="text" name="fullname" class="form-control" value="<?php echo str_replace('-', ' ', $vis->fullname); ?>">
+                                                <label>FullName <span class="text-danger">*</span></label>
+                                                <input type="text" name="fullname" class="form-control" value="<?php echo $vis->fullname; ?>">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Occupation <span class="text-danger">*</span></label>
+                                                <input type="text" name="occupation" class="form-control" value="<?php echo $vis->fullname; ?>">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Career Interest <span class="text-danger">*</span></label>
+                                                <input type="text" name="career_interest" class="form-control" value="<?php echo $vis->career_interest; ?>">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Personal Interest <span class="text-danger">*</span></label>
+                                                <input type="text" name="personal_interest" class="form-control" value="<?php echo $vis->personal_interest; ?>">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Why are you signing up? <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="signing_up" rows="5" cols="5" placeholder="Why are you signing up?"><?php echo $vis->signing_up; ?></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>What can you bring to the community?<span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="bring_to_community" rows="5" cols="5" placeholder="What can you bring to the community?"><?php echo $vis->bring_to_community; ?></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Link to social media <span class="text-danger">*</span></label>
+                                                <input type="text" name="social_url" class="form-control" value="<?php echo $vis->social_url; ?>">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>What are you hoping to get?<span class="text-danger">*</span></label>
+                                                <input type="checkbox" class="form-control" name="hoping_to_get[]" value="Become an ambassador"> Become an ambassador
+                                                <br>
+                                                <input type="checkbox" class="form-control" name="hoping_to_get[]" value="Deliver a Workshop"> Deliver a Workshop
+                                                <br>
+                                                <input type="checkbox" class="form-control" class="form-control" name="hoping_to_get[]" value="Mentor"> Mentor
+                                                <br>
+                                                <input type="checkbox" class="form-control" class="form-control" name="hoping_to_get[]" value="Share your skills"> Share your skills
+                                                <br>
+                                                <input type="checkbox" class="form-control" name="hoping_to_get[]" value="Attend events"> Attend events
+                                                <br>
+                                                <input type="checkbox" class="form-control" name="hoping_to_get[]" value="Become a fellow"> Become a fellow
+                                                <br>
+                                                <input type="checkbox" class="form-control" name="hoping_to_get[]" value="Gain entrepreneurship skills"> Gain entrepreneurship skills
+                                                <br>
+                                                <input type="checkbox" class="form-control" name="hoping_to_get[]" value="Mentor"> Mentor
+                                                <br>
                                             </div>
                                         </div>
                                         
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Body</label>
-                                                <textarea id="summernote" name="body" class="form-control" aria-label="With textarea"><?php echo $vis->body; ?></textarea>
+                                                <label>Description</label>
+                                                <textarea name="description" class="form-control" aria-label="With textarea"><?php echo $vis->description; ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +134,7 @@ foreach($visionary as $vis){}
                                     </div>
                                 </form>
                                 
-                                <form action="<?php echo base_url('admin/edit_visionary_image/'.$vis->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form action="<?php echo base_url('admin/visionary/edit_image/'.$vis->id); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
@@ -114,35 +161,7 @@ foreach($visionary as $vis){}
     </div>
 </div>
 
-<!-- Start Main project js, jQuery, Bootstrap -->
-<script src="<?php echo base_url('admin/assets/bundles/lib.vendor.bundle.js'); ?>"></script>
-
-<!-- Start Plugin Js -->
-<script src="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/dropify/js/dropify.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/bundles/dataTables.bundle.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.min.js'); ?>"></script>
-
-<!-- Start project main js  and page js -->
-<script src="<?php echo base_url('admin/assets/js/core.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/form/dropify.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/page/dialogs.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/table/datatable.js'); ?>"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script defer src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-<!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>tinymce.init({selector:'textarea'});</script>-->
-
-<script>
-$(document).ready(function() {
-      $('#summernote').summernote({
-          tabsize: 2,
-          height: 200
-      });
-  });
-</script>
+<?php $this->load->view('menu/admin/script'); ?>
 
 </body>
 </html>

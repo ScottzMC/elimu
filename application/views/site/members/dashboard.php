@@ -9,26 +9,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>">
 
     <!-- CSS
 	============================================ -->
 
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/icofont.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/flaticon.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/font-awesome.min.css'); ?>">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/animate.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/swiper-bundle.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/magnific-popup.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/nice-select.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/apexcharts.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/jqvmap.min.css'); ?>">
-
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
+    <?php $this->load->view('menu/member/style'); ?>
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
     <!-- <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
@@ -49,12 +35,19 @@
 
                 <!-- Header Logo Start -->
                 <div class="login-header-logo">
-                    <a href="#"><img height="90" width="180" src="<?php echo base_url('assets/images/elimu.png'); ?>" alt="Logo"></a></li>
+                    <a href="<?php echo site_url('home'); ?>"><img style="height: 90px; width: auto;" src="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>" alt="Logo"></a></li>
                 </div>
                 <!-- Header Logo End -->
 
                 <!-- Header Search Start -->
                 <div class="login-header-search dropdown">
+                    <button class="search-toggle" data-bs-toggle="dropdown"><i class="flaticon-loupe"></i></button>
+
+                    <div class="search-input dropdown-menu">
+                        <form action="<?php echo base_url('members/search'); ?>" method="POST">
+                            <input type="text" name="search_query" placeholder="Search here">
+                        </form>
+                    </div>
                 </div>
                 <!-- Header Search End -->
 
@@ -73,6 +66,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="" href="<?php echo site_url('members/profile'); ?>"><i class="icofont-user"></i> Profile</a></li>
+                            <li><a class="" href="<?php echo site_url('members/message'); ?>"><i class="icofont-user"></i> Message</a></li>
                             <li><a class="" href="<?php echo site_url('logout'); ?>"><i class="icofont-logout"></i> Sign Out</a></li>
                         </ul>
                     </div>
@@ -90,117 +84,114 @@
             <!-- Sidebar Wrapper Start -->
             <div class="sidebar-wrapper">
                 <div class="menu-list">
-                    <a href="<?php echo site_url('home'); ?>">
+                    <a href="<?php echo site_url('home'); ?>" title="Home">
                         <img src="<?php echo base_url('assets/images/menu-icon/icon-1.png'); ?>" alt="Icon" title="Home">
                     </a>
-                    <a class="active" href="<?php echo site_url('members/dashboard'); ?>">
+                    <a class="active" href="<?php echo site_url('members/dashboard'); ?>" title="Dashboard">
                         <img src="<?php echo base_url('assets/images/menu-icon/icon-1.png'); ?>" alt="Icon" title="Dashboard">
                     </a>
-                    <a href="<?php echo site_url('members/role_model'); ?>">
-                        <img src="<?php echo base_url('assets/images/menu-icon/icon-1.png'); ?>" alt="Icon" title="Role Model">
-                    </a>
-                    <a href="<?php echo site_url('members/visionary'); ?>">
-                        <img src="<?php echo base_url('assets/images/menu-icon/icon-3.png'); ?>" alt="Icon" title="Visionary">
-                    </a>
-                    <!--<a href="#"><img src="<?php echo base_url('assets/images/menu-icon/icon-4.png'); ?>" alt="Icon"></a>
-                    <a href="#"><img src="<?php echo base_url('assets/images/menu-icon/icon-5.png'); ?>" alt="Icon"></a>-->
                 </div>
             </div>
             <!-- Sidebar Wrapper End -->
-
-            <!-- Page Content Wrapper Start -->
-            <div class="page-content-wrapper">
-                <div class="container-fluid custom-container">
-
-                    <!-- Message Start -->
-                    <div class="message">
-                        <div class="message-icon">
-                            <img src="<?php echo base_url('assets/images/menu-icon/icon-6.png'); ?>" alt="">
+            
+            <div class="page-content-wrapper py-0">
+            
+                <?php $this->load->view('menu/member/nav'); ?>
+            
+                <!-- Page Content Wrapper Start -->
+                <div class="main-content-wrapper pb-0" style="padding-bottom: 300px;">
+                    <div class="container-fluid custom-container">
+    
+                        <!-- Message Start -->
+                        <div class="message">
+                            <div class="message-icon">
+                                <img src="<?php echo base_url('assets/images/menu-icon/icon-6.png'); ?>" alt="">
+                            </div>
+                            <div class="message-content">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
+                                since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                                but also the leap into electronic.</p>
+                            </div>
                         </div>
-                        <div class="message-content">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
-                            since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
-                            but also the leap into electronic.</p>
+                        <!-- Message End -->
+    
+                        <!-- Admin Courses Tab Start -->
+                        <div class="admin-courses-tab">
+                            <h3 class="title">Launchpad</h3>
                         </div>
-                    </div>
-                    <!-- Message End -->
-
-                    <!-- Admin Courses Tab Start -->
-                    <div class="admin-courses-tab">
-                        <h3 class="title">Launchpad</h3>
-                    </div>
-                    <!-- Admin Courses Tab End -->
-
-                    <!-- Admin Courses Tab Content Start -->
-                    <div class="admin-courses-tab-content">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tab1">
-
-                                <!-- Courses Item Start -->
-                                <?php if(!empty($launchpad)){ foreach($launchpad as $launch){ ?>
-                                <div class="courses-item">
-                                    <div class="item-thumb">
-                                        <a href="<?php echo site_url('members/launch_pad_course/'.$launch->title); ?>">
-                                            <img src="<?php echo base_url('uploads/course/'.$launch->image); ?>" alt="<?php echo $launch->title;  ?>">
-                                        </a>
-                                    </div>
-
-                                    <div class="content-title">
-                                        <h3 class="title">
+                        <!-- Admin Courses Tab End -->
+    
+                        <!-- Admin Courses Tab Content Start -->
+                        <div class="admin-courses-tab-content">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tab1">
+    
+                                    <!-- Courses Item Start -->
+                                    <?php if(!empty($launchpad)){ foreach($launchpad as $launch){ ?>
+                                    <div class="courses-item">
+                                        <div class="item-thumb">
                                             <a href="<?php echo site_url('members/launch_pad_course/'.$launch->title); ?>">
-                                                <?php echo str_replace('-', ' ', $launch->title); ?>
+                                                <img src="<?php echo base_url('uploads/course/'.$launch->image); ?>" alt="<?php echo $launch->title;  ?>">
                                             </a>
-                                        </h3>
+                                        </div>
+    
+                                        <div class="content-title">
+                                            <h3 class="title">
+                                                <a href="<?php echo site_url('members/launch_pad/'.$launch->id); ?>">
+                                                    <?php echo str_replace('-', ' ', $launch->title); ?>
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        
                                     </div>
-                                    
+                                    <?php } }else{ echo ''; } ?>
+                                    <!-- Courses Item End -->
+    
                                 </div>
-                                <?php } }else{ echo ''; } ?>
-                                <!-- Courses Item End -->
-
+                                
                             </div>
-                            
                         </div>
-                    </div>
-                    <!-- Admin Courses Tab Content End -->
-                    
-                    <!-- Admin Courses Tab Start -->
-                    <div class="admin-courses-tab">
-                        <h3 class="title">Fellowship</h3>
-                    </div>
-                    <!-- Admin Courses Tab End -->
-
-                    <!-- Admin Courses Tab Content Start -->
-                    <div class="admin-courses-tab-content">
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tab1">
-
-                                <!-- Courses Item Start -->
-                                <?php if(!empty($fellowship)){ foreach($fellowship as $fellow){ ?>
-                                <div class="courses-item">
-                                    <div class="item-thumb">
-                                        <a href="<?php echo site_url('members/fellowship_course/'.$fellow->title); ?>">
-                                            <img src="<?php echo base_url('uploads/course/'.$fellow->image); ?>" alt="<?php echo $fellow->title;  ?>">
-                                        </a>
-                                    </div>
-
-                                    <div class="content-title">
-                                        <h3 class="title">
-                                            <a href="<?php echo site_url('members/fellowship_course'); ?>">
-                                                <?php echo $fellow->title; ?>
+                        <!-- Admin Courses Tab Content End -->
+                        
+                        <!-- Admin Courses Tab Start -->
+                        <div class="admin-courses-tab">
+                            <h3 class="title">Fellowship</h3>
+                        </div>
+                        <!-- Admin Courses Tab End -->
+    
+                        <!-- Admin Courses Tab Content Start -->
+                        <div class="admin-courses-tab-content">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tab1">
+    
+                                    <!-- Courses Item Start -->
+                                    <?php if(!empty($fellowship)){ foreach($fellowship as $fellow){ ?>
+                                    <div class="courses-item">
+                                        <div class="item-thumb">
+                                            <a href="<?php echo site_url('members/fellowship_course/'.$fellow->title); ?>">
+                                                <img src="<?php echo base_url('uploads/course/'.$fellow->image); ?>" alt="<?php echo $fellow->title;  ?>">
                                             </a>
-                                        </h3>
+                                        </div>
+    
+                                        <div class="content-title">
+                                            <h3 class="title">
+                                                <a href="<?php echo site_url('members/fellowship_course'); ?>">
+                                                    <?php echo $fellow->title; ?>
+                                                </a>
+                                            </h3>
+                                        </div>
+                                        
                                     </div>
-                                    
+                                    <?php } }else{ echo ''; } ?>
+                                    <!-- Courses Item End -->
+    
                                 </div>
-                                <?php } }else{ echo ''; } ?>
-                                <!-- Courses Item End -->
-
+                                
                             </div>
-                            
                         </div>
+                        <!-- Admin Courses Tab Content End -->
+    
                     </div>
-                    <!-- Admin Courses Tab Content End -->
-
                 </div>
             </div>
             <!-- Page Content Wrapper End -->
@@ -208,7 +199,7 @@
         </div>
         <!-- Courses Admin End -->
 
-        <?php include 'menu/footer.php'; ?>
+        <?php $this->load->view('menu/member/footer'); ?>
 
         <!--Back To Start-->
         <a href="#" class="back-to-top">
@@ -221,26 +212,7 @@
     <!-- JS
     ============================================ -->
 
-    <!-- Modernizer & jQuery JS -->
-    <script src="<?php echo base_url('assets/js/vendor/modernizr-3.11.2.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/jquery-3.5.1.min.js'); ?>"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="<?php echo base_url('assets/js/plugins/popper.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-
-    <!-- Plugins JS -->
-    <script src="<?php echo base_url('assets/js/plugins/swiper-bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.magnific-popup.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/video-playlist.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.nice-select.min.js'); ?>"></script>
-
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <script src="assets/js/plugins.min.js"></script> -->
-
-
-    <!-- Main JS -->
-    <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+    <?php $this->load->view('menu/member/script'); ?>
 
 </body>
 

@@ -9,26 +9,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>">
 
     <!-- CSS
 	============================================ -->
 
-    <!-- Icon Font CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/icofont.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/flaticon.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/font-awesome.min.css'); ?>">
-
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/animate.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/swiper-bundle.min.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/magnific-popup.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/nice-select.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/apexcharts.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins/jqvmap.min.css'); ?>">
-
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
+    <?php $this->load->view('menu/member/style'); ?>
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
     <!-- <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
@@ -49,7 +35,7 @@
 
                 <!-- Header Logo Start -->
                 <div class="login-header-logo">
-                    <a href="#"><img height="90" width="180" src="<?php echo base_url('assets/images/elimu.png'); ?>" alt="Logo"></a></li>
+                    <a href="#"><img style="height: 90px; width: auto;" src="<?php echo base_url('assets/images/elimu-logo-3.png'); ?>" alt="Logo"></a></li>
                 </div>
                 <!-- Header Logo End -->
 
@@ -73,6 +59,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="" href="<?php echo site_url('members/profile'); ?>"><i class="icofont-user"></i> Profile</a></li>
+                            <li><a class="" href="<?php echo site_url('members/message'); ?>"><i class="icofont-user"></i> Message</a></li>
                             <li><a class="" href="<?php echo site_url('logout'); ?>"><i class="icofont-logout"></i> Sign Out</a></li>
                         </ul>
                     </div>
@@ -96,20 +83,15 @@
                     <a class="active" href="<?php echo site_url('members/dashboard'); ?>">
                         <img src="<?php echo base_url('assets/images/menu-icon/icon-1.png'); ?>" alt="Icon" title="Dashboard">
                     </a>
-                    <a href="<?php echo site_url('members/role_model'); ?>">
-                        <img src="<?php echo base_url('assets/images/menu-icon/icon-1.png'); ?>" alt="Icon" title="Role Model">
-                    </a>
-                    <a href="<?php echo site_url('members/visionary'); ?>">
-                        <img src="<?php echo base_url('assets/images/menu-icon/icon-3.png'); ?>" alt="Icon" title="Visionary">
-                    </a>
-                    <!--<a href="#"><img src="<?php echo base_url('assets/images/menu-icon/icon-4.png'); ?>" alt="Icon"></a>
-                    <a href="#"><img src="<?php echo base_url('assets/images/menu-icon/icon-5.png'); ?>" alt="Icon"></a>-->
                 </div>
             </div>
             <!-- Sidebar Wrapper End -->
 
-            <!-- Page Content Wrapper Start -->
-            <div class="page-content-wrapper">
+            <div class="page-content-wrapper py-0">
+                <!-- Page Content Wrapper Start -->
+                <?php $this->load->view('menu/member/nav'); ?>
+                
+              <div class="main-content-wrapper pb-0">
                 <div class="container-fluid custom-container">
 
                     <!-- Message Start -->
@@ -233,7 +215,7 @@
                                 <br><br>
                                 <!-- Courses Item End -->
                                 
-                                <a href="<?php echo site_url('members/edit_profile/'.$prof->id); ?>" class="btn btn-primary btn-hover-dark w-100">Update my Profile</a>
+                                <a href="<?php echo site_url('members/profile/edit/'.$prof->id); ?>" class="btn btn-primary btn-hover-dark w-100">Update my Profile</a>
 
                             </div>
                             
@@ -242,13 +224,14 @@
                     <!-- Admin Courses Tab Content End -->
 
                 </div>
+              </div>    
             </div>
             <!-- Page Content Wrapper End -->
 
         </div>
         <!-- Courses Admin End -->
 
-        <?php include 'menu/footer.php'; ?>
+        <?php $this->load->view('menu/member/footer'); ?>
 
         <!--Back To Start-->
         <a href="#" class="back-to-top">
@@ -261,26 +244,7 @@
     <!-- JS
     ============================================ -->
 
-    <!-- Modernizer & jQuery JS -->
-    <script src="<?php echo base_url('assets/js/vendor/modernizr-3.11.2.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/vendor/jquery-3.5.1.min.js'); ?>"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="<?php echo base_url('assets/js/plugins/popper.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-
-    <!-- Plugins JS -->
-    <script src="<?php echo base_url('assets/js/plugins/swiper-bundle.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.magnific-popup.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/video-playlist.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/plugins/jquery.nice-select.min.js'); ?>"></script>
-
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
-    <!-- <script src="assets/js/plugins.min.js"></script> -->
-
-
-    <!-- Main JS -->
-    <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+    <?php $this->load->view('menu/member/script'); ?>
 
 </body>
 

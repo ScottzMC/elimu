@@ -7,32 +7,15 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <title>Course Content || Admin || Elimu</title>
 
-<!-- Bootstrap Core and vandor -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" />
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/dropify/css/dropify.min.css'); ?>">
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/dataTables.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css'); ?>">
+<?php $this->load->view('menu/admin/style'); ?>
 
-
-<!-- Core css -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/css/style.min.css'); ?>"/>
 </head>
 
 <body class="font-muli theme-cyan gradient">
 
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-    </div>
-</div>
-
 <div id="main_content">
     <!-- Start project content area -->
-    <?php include('menu/nav.php'); ?>
+    <?php $this->load->view('menu/admin/nav'); ?>
     <div class="page">
         <!-- Start Page header -->
         <div class="section-body">
@@ -41,7 +24,7 @@
                     <div class="header-action">
                         <h1 class="page-title">Course Content</h1>
                         <ol class="breadcrumb page-breadcrumb">
-                          <li class="breadcrumb-item"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></li>
+                          <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard'); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Course Content</li>
                         </ol>
                     </div>
@@ -65,7 +48,7 @@
                         function delete_course(id){
                           var del_id = id;
                           if(confirm("Are you sure you want to delete this course content")){
-                          $.post('<?php echo base_url('admin/delete_course'); ?>', {"del_id": del_id}, function(data){
+                          $.post('<?php echo base_url('admin/course/delete_course'); ?>', {"del_id": del_id}, function(data){
                             alert('Deleted Successfully');
                             location.reload();
                             $('#cti').html(data)
@@ -83,11 +66,10 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Title</th>
-                                        <th>Body</th>
                                         <th>Category</th>
-                                        <th>Lesson</th>
+                                        <!--<th>Lesson</th>
                                         <th>Sub Lesson Number</th>
-                                        <th>Sub Lesson Title</th>
+                                        <th>Sub Lesson Title</th>-->
                                         <th>Action</th>
                                         <th>Action</th>
                                     </tr>
@@ -97,12 +79,11 @@
                                     <tr>
                                         <td><?php echo $course->id; ?></td>
                                         <td><span class="font-16"><?php echo str_replace('-', ' ', $course->title); ?></span></td>
-                                        <td><?php echo character_limiter($course->body, 50); ?></td>
                                         <td><?php echo $course->category; ?></td>
-                                        <td>Lesson <?php echo $course->lesson; ?></td>
-                                        <td><?php echo $course->sub_lesson_no; ?></td>
-                                        <td><?php echo $course->sub_lesson_title; ?></td>
-                                        <td><a href="<?php echo site_url('admin/edit_course/'.$course->id); ?>">Edit</a></td>
+                                        <!--<td>Lesson < ?php echo $course->lesson; ?></td>
+                                        <td>< ?php echo $course->sub_lesson_no; ?></td>
+                                        <td>< ?php echo $course->sub_lesson_title; ?></td>-->
+                                        <td><a href="<?php echo site_url('admin/course/edit/'.$course->id); ?>">Edit</a></td>
                                         <td><button type="button" onclick="delete_course(<?php echo $course->id; ?>)">Delete</button></td>
                                     </tr>
                                   <?php } }else{ echo ''; } ?>
@@ -117,7 +98,7 @@
                                 <h3 class="card-title">Add Course Content</h3>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('admin/add_course'); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form action="<?php echo base_url('admin/course/add'); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
@@ -141,7 +122,7 @@
                                           </div>
                                         </div>
                                         
-                                        <div class="col-md-4 col-sm-12">
+                                        <!--<div class="col-md-4 col-sm-12">
                                           <div class="form-group">
                                               <label>Lesson</label>
                                               <select name="lesson" class="form-control">
@@ -214,19 +195,20 @@
                                                 <label>Sub-Lesson Title <span class="text-danger">*</span></label>
                                                 <input type="text" name="sub_lesson_title" class="form-control" value="">
                                             </div>
+                                        </div>-->
+                                        
+                                        <div class="col-md-4 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Video Url <span class="text-danger">(Copy the slug or text after the YouTube link. https://youtube.com/[abcedkoe])</span></label>
+                                                <!--<input type="file" name="userFiles1[]" class="form-control">-->
+                                                <input class="form-control" type="text" name="video_url">
+                                            </div>
                                         </div>
                                         
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
-                                                <label>Video URL <span class="text-danger">*</span></label>
-                                                <input type="text" name="video_url" class="form-control" value="">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label>Body</label>
-                                                <textarea name="body" class="form-control" aria-label="With textarea"></textarea>
+                                                <label>Playlist Url <span class="text-danger">(Copy the slug or text after the YouTube Playlist link. https://youtube.com/[abcedkoe])</span></label>
+                                                <input class="form-control" type="text" name="playlist">
                                             </div>
                                         </div>
                                     </div>
@@ -246,7 +228,7 @@
                         function delete_lesson(id){
                           var del_id = id;
                           if(confirm("Are you sure you want to delete this lesson")){
-                          $.post('<?php echo base_url('admin/delete_lesson'); ?>', {"del_id": del_id}, function(data){
+                          $.post('<?php echo base_url('admin/lesson/delete_lesson'); ?>', {"del_id": del_id}, function(data){
                             alert('Deleted Successfully');
                             location.reload();
                             $('#cti').html(data)
@@ -276,12 +258,12 @@
                                     <tr>
                                         <td><?php echo $less->id; ?></td>
                                         <td class="w60">
-                                            <img class="avatar" src="https://scottnnaghor.com/elimu/uploads/course/<?php echo $less->image; ?>" alt="<?php echo $course->title; ?>">
+                                            <img class="avatar" src="<?php echo base_url('uploads/course/'.$less->image); ?>" alt="<?php echo $course->title; ?>">
                                         </td>
                                         <td><span class="font-16"><?php echo str_replace('-', ' ', $less->title); ?></span></td>
                                         <td><?php echo character_limiter($less->body, 50); ?></td>
                                         <td><?php echo $less->category; ?></td>
-                                        <td><a href="<?php echo site_url('admin/edit_lesson/'.$less->id); ?>">Edit</a></td>
+                                        <td><a href="<?php echo site_url('admin/lesson/edit/'.$less->id); ?>">Edit</a></td>
                                         <td><button type="button" onclick="delete_lesson(<?php echo $less->id; ?>)">Delete</button></td>
                                     </tr>
                                   <?php } }else{ echo ''; } ?>
@@ -296,7 +278,7 @@
                                 <h3 class="card-title">Add Lesson Content</h3>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('admin/add_lesson'); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form action="<?php echo base_url('admin/lesson/add'); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
@@ -326,7 +308,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Body</label>
-                                                <textarea name="body" class="form-control" aria-label="With textarea"></textarea>
+                                                <textarea cols="10" rows="10" name="body" class="form-control" aria-label="With textarea"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -349,35 +331,7 @@
     </div>
 </div>
 
-<!-- Start Main project js, jQuery, Bootstrap -->
-<script src="<?php echo base_url('admin/assets/bundles/lib.vendor.bundle.js'); ?>"></script>
-
-<!-- Start Plugin Js -->
-<script src="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/dropify/js/dropify.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/bundles/dataTables.bundle.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.min.js'); ?>"></script>
-
-<!-- Start project main js  and page js -->
-<script src="<?php echo base_url('admin/assets/js/core.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/form/dropify.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/page/dialogs.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/table/datatable.js'); ?>"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script defer src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-<!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>tinymce.init({selector:'textarea'});</script>-->
-
-<script>
-$(document).ready(function() {
-      $('#summernote').summernote({
-          tabsize: 2,
-          height: 200
-      });
-  });
-</script>
+<?php $this->load->view('menu/admin/script'); ?>
 
 </body>
 </html>

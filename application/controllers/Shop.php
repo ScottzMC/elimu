@@ -20,8 +20,53 @@
     	  }else{
     		$data['message'] = $this->session->flashdata('message');
     	  }
+    	  
+    	  $session_email = $this->session->userdata('uemail');
+          $fullname = $this->session->userdata('fullname');
+    	  
+    	  $submit = $this->input->post('submit');
+    	  
+    	  if(isset($submit)){
+        	  $telephone = $this->input->post('telephone');
+        	  $address = $this->input->post('address');
+        	  
+        	  if($cart = $this->cart->contents()):
+        		foreach ($cart as $item):
+    			    $order_array = array(
+    		            'fullname' => $fullname,
+                        'email' => $session_email,
+                        'title' => $item['name'],
+            			'price' => $item['price'],
+                        'quantity' => $item['qty'],
+                        'image' => $item['image'],
+                        'color' => $item['color'],
+                        'size' => $item['size'],
+                        'telephone' => $telephone,
+                        'address' => $address,
+                        'status' => 'Pending',
+                        'created_time' => time(),
+                        'created_date'  => date('Y-m-j H:i:s')
+                    );
+                        
+                    $this->Data_model->insert_order_items($order_array);
+    
+                    endforeach;
+        		endif;
+        		
+        		redirect('shop/payment');
+    	  }
     		  
             $this->load->view('site/shop/checkout', $data);
+        }
+        
+        public function payment(){
+            if(!$this->cart->contents()){
+        		$data['message'] = '<p><div class="alert alert-danger" role="alert">Your cart is empty!</div></p>';
+        	}else{
+        		$data['message'] = $this->session->flashdata('message');
+            }
+    	  
+            $this->load->view('site/shop/payment', $data);
         }
         
         // Shopping Cart 
@@ -73,32 +118,7 @@
         public function stripe_post(){
             require_once('application/libraries/stripe-php/init.php');
             
-            $session_email = $this->session->userdata('uemail');
-            $session_fullname = $this->session->userdata('ufullname');
-
-            if($cart = $this->cart->contents()):
-    			foreach ($cart as $item):
-			       $order_array = array(
-			            'fullname' => $session_email,
-                        'email' => $session_fullname,
-                        'title' => $item['name'],
-            			'price' => $item['price'],
-                        'quantity' => $item['qty'],
-                        'image' => $item['image'],
-                        'color' => $item['color'],
-                        'size' => $item['size'],
-                        'status' => 'Pending',
-                        'created_time' => time(),
-                        'created_date'  => date('Y-m-j H:i:s')
-                    );
-                    
-                $this->Data_model->insert_order_items($order_array);
-
-                endforeach;
-    		endif;
-            
             $amount = $this->cart->total();
-            $this->cart->destroy();
             
             \Stripe\Stripe::setApiKey($this->config->item('stripe_secret'));
             \Stripe\Charge::create ([
@@ -107,6 +127,8 @@
                 "source" => $this->input->post('stripeToken'),
                 "description" => "Test payment from Elimu Shopping" 
             ]);
+            
+            $this->cart->destroy();
             ?>
             <script>
                 alert('Payment made');

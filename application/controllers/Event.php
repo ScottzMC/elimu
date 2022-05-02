@@ -1,9 +1,12 @@
 <?php 
-
+    
     class Event extends CI_Controller{
         
         public function index(){
-            $this->load->view('site/event');
+            $data['event'] = $this->Data_model->display_event();
+            $data['testimonial'] = $this->Data_model->display_testimonial();
+            
+            $this->load->view('site/event', $data);
         }
     }
 

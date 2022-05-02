@@ -5,34 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
-<title>Members || Admin || Elimu</title>
+<title>Members || Admin</title>
 
-<!-- Bootstrap Core and vandor -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap/css/bootstrap.min.css'); ?>" />
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/dropify/css/dropify.min.css'); ?>">
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/dataTables.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/plugins/datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css'); ?>">
+<?php $this->load->view('menu/admin/style'); ?>
 
-
-<!-- Core css -->
-<link rel="stylesheet" href="<?php echo base_url('admin/assets/css/style.min.css'); ?>"/>
 </head>
 
 <body class="font-muli theme-cyan gradient">
 
-<!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-    </div>
-</div>
-
 <div id="main_content">
     <!-- Start project content area -->
-    <?php include('menu/nav.php'); ?>
+    <?php $this->load->view('menu/admin/nav'); ?>
     <div class="page">
         <!-- Start Page header -->
         <div class="section-body">
@@ -41,7 +24,7 @@
                     <div class="header-action">
                         <h1 class="page-title">Members</h1>
                         <ol class="breadcrumb page-breadcrumb">
-                          <li class="breadcrumb-item"><a href="<?php echo site_url('dashboard'); ?>">Dashboard</a></li>
+                          <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard'); ?>">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Members</li>
                         </ol>
                     </div>
@@ -63,7 +46,7 @@
                         function delete_member(id){
                           var del_id = id;
                           if(confirm("Are you sure you want to delete this members")){
-                          $.post('<?php echo base_url('admin/delete_member'); ?>', {"del_id": del_id}, function(data){
+                          $.post('<?php echo base_url('admin/member/delete_member'); ?>', {"del_id": del_id}, function(data){
                             alert('Deleted Successfully');
                             location.reload();
                             $('#cti').html(data)
@@ -101,7 +84,7 @@
                                     <tr>
                                         <td><?php echo $mem->id; ?></td>
                                         <td class="w60">
-                                            <img class="avatar" src="https://scottnnaghor.com/elimu/uploads/profile/<?php echo $mem->image; ?>" alt="<?php echo $mem->fullname; ?>">
+                                            <img class="avatar" src="<?php echo base_url('uploads/profile/'.$mem->image); ?>" alt="<?php echo $mem->fullname; ?>">
                                         </td>
                                         <td><span class="font-16"><?php echo $mem->fullname; ?></span></td>
                                         <td><span class="font-16"><?php echo $mem->email; ?></span></td>
@@ -118,7 +101,7 @@
                                         <?php }else{ ?>
                                         <td></td>
                                         <?php } ?>
-                                        <td><a href="<?php echo site_url('admin/edit_member/'.$mem->id); ?>">Edit</a></td>
+                                        <td><a href="<?php echo site_url('admin/member/edit/'.$mem->id); ?>">Edit</a></td>
                                         <td><button type="button" onclick="delete_member(<?php echo $mem->id; ?>)">Delete</button></td>
                                     </tr>
                                   <?php } }else{ echo ''; } ?>
@@ -133,7 +116,7 @@
                                 <h3 class="card-title">Add Members</h3>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('admin/add_member'); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+                                <form action="<?php echo base_url('admin/member/add'); ?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-12">
                                             <div class="form-group">
@@ -266,35 +249,7 @@
     </div>
 </div>
 
-<!-- Start Main project js, jQuery, Bootstrap -->
-<script src="<?php echo base_url('admin/assets/bundles/lib.vendor.bundle.js'); ?>"></script>
-
-<!-- Start Plugin Js -->
-<script src="<?php echo base_url('admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/dropify/js/dropify.min.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/bundles/dataTables.bundle.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/plugins/sweetalert/sweetalert.min.js'); ?>"></script>
-
-<!-- Start project main js  and page js -->
-<script src="<?php echo base_url('admin/assets/js/core.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/form/dropify.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/page/dialogs.js'); ?>"></script>
-<script src="<?php echo base_url('admin/assets/js/table/datatable.js'); ?>"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script defer src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-<!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>tinymce.init({selector:'textarea'});</script>-->
-
-<script>
-$(document).ready(function() {
-      $('#summernote').summernote({
-          tabsize: 2,
-          height: 200
-      });
-  });
-</script>
+<?php $this->load->view('menu/admin/script'); ?>
 
 </body>
 </html>
